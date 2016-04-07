@@ -8,20 +8,23 @@ description: One mans thoughts and learnings for another.
 #   Google search results) and in your feed.xml site description.
 
 # baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://www.prashantp.org" # the base hostname & protocol for your site
+url: "http://www.prashantp.org"
 # twitter_username: jekyllrb
 github_username:  prashantpro
-permalink: /:year/:month/:day/:title/
+#permalink: /:year/:month/:day/:title/
+permalink: pretty
+
+disqus_shortname: prashantporg
+disqus_url: "http://www.prashantp.org"
 
 # Build settings
 markdown: kramdown
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-gist]
 
 paginate: 10
 paginate_path: "page:num"
 
 # highlight
-# 本地用rouge, github上用pygments
 # highlighter: pygments
 # highlighter: rouge
 # highlighter: false

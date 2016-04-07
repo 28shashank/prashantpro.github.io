@@ -5,9 +5,185 @@
     <description>One mans thoughts and learnings for another.</description>
     <link>http://www.prashantp.org/</link>
     <atom:link href="http://www.prashantp.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 06 Apr 2016 18:10:46 +0530</pubDate>
-    <lastBuildDate>Wed, 06 Apr 2016 18:10:46 +0530</lastBuildDate>
+    <pubDate>Thu, 07 Apr 2016 19:44:40 +0530</pubDate>
+    <lastBuildDate>Thu, 07 Apr 2016 19:44:40 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Using SSH for accessing remote server via a Jump Host and other handy things!</title>
+        <description>&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#basic-usage&quot; id=&quot;markdown-toc-basic-usage&quot;&gt;Basic usage&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#config-file&quot; id=&quot;markdown-toc-config-file&quot;&gt;Config file&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jump-server&quot; id=&quot;markdown-toc-jump-server&quot;&gt;Jump Server&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#port-forwarding-with-jump-server&quot; id=&quot;markdown-toc-port-forwarding-with-jump-server&quot;&gt;Port Forwarding with Jump Server&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#things-you-may-find-handy&quot; id=&quot;markdown-toc-things-you-may-find-handy&quot;&gt;Things you may find handy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;basic-usage&quot;&gt;Basic usage&lt;/h1&gt;
+
+&lt;p&gt;Lets say you need to connect to a remote Linux server.&lt;/p&gt;
+
+&lt;p&gt;The stand way to connect from terminal:
+ssh _remote_username@the_remote_server_ip&lt;/p&gt;
+
+&lt;p&gt;Here, the_remote_server_ip needs to be the IP address or the hostname or the domain name from which the remote server is accessible.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh prashant@192.168.6.50&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;You should get prompted for a password (passwordless login is possible too, see below), post entering the right credentials you are in.&lt;/p&gt;
+
+&lt;p&gt;You could also write the same command with the -l (that’s lowercase L) argument.&lt;/p&gt;
+
+&lt;p&gt;ssh -l _remote_username the_remote_server_ip&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -l prashant 192.168.6.50&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Password-less login using SSH is also possible and allows for much easier (also secure) connection.
+When you often have to login/logout of various servers this is a great time saver.&lt;/p&gt;
+
+&lt;p&gt;There’s plenty of information out there about how to do this, just search it in on the web.&lt;/p&gt;
+
+&lt;h2 id=&quot;config-file&quot;&gt;Config file&lt;/h2&gt;
+&lt;p&gt;Next, to make repeated access easy, create a “config” file in your ssh directory under your users home directory.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;vi ~/.ssh/config&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Put the following content as an example (replace the IP with your remote server IP and replace the Username with yours).&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Host remotebox
+  Hostname 192.168.6.50
+  User prashant&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;With the above config file in place you should be able to now use the below shortcut command:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh remotebox
+
+Above is same as this:
+ssh prashant@192.168.6.50
+
+If you wanted to use a different name but still use the config style shortuct:
+ssh -l anotherusername remotebox
+
+Above is same as this:
+ssh anotherusername@192.168.6.50&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;
+That’s it, you should now have a easy way to login to your target server from a Jump Host with a lot less to type.
+As an added advantage you can now access Ports of target server locally. All you need is an &lt;em&gt;active&lt;/em&gt; connection to the target done via ssh.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;jump-server&quot;&gt;Jump Server&lt;/h1&gt;
+
+&lt;p&gt;Now, with some basics covered here’s what we are trying to do:
+You need to access a production server which is behind a firewall (Can’t ssh directly to the server).
+But there is a Jump server available.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jump Server:
+A machine that you need to connect to first then only from this machine you can SSH into the remote server.
+Jump servers are used to protect the other servers from direct access. 
+It would typically be in DMZ while the other servers are in a secure zone.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now this means you have to &lt;em&gt;first&lt;/em&gt; ssh into the Jump server then from that machine ssh &lt;em&gt;again&lt;/em&gt; to the target server.&lt;/p&gt;
+
+&lt;p&gt;To make it easier to login with a single command edit the ~/.ssh/.config file entry like below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Host productionbox
+  Hostname 10.10.19.20
+  User admin
+  ProxyCommand ssh -W %h:%p prashant@192.168.6.50&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Here Hostname with 10.10.19.20 is assumed to be the target server IP.&lt;/li&gt;
+  &lt;li&gt;The User denotes the remote user on the target server, here admin.&lt;/li&gt;
+  &lt;li&gt;ProxyCommand has the user and IP of the Jump Server, like prashant@192.168.6.50.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;port-forwarding-with-jump-server&quot;&gt;Port Forwarding with Jump Server&lt;/h1&gt;
+&lt;p&gt;What if you also wanted to be able to do Port Forwarding.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A technique which will allow you to access the target machines Port
+from your local machine. Given that its blocked from all but allowed only from the Jump Server.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You simply need to add a LocalForward entry to your config like below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Host productionbox
+  Hostname 10.10.19.20
+  User admin
+  ProxyCommand ssh -W %h:%p prashant@192.168.6.50
+  LocalForward 8080 127.0.0.1:8080&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh productionbox&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once connected any data sent to the local IP:PORT (127.0.0.1 8080) will be directed to the productionbox target server.
+(Port on Local machine and target can be different).&lt;/p&gt;
+
+&lt;p&gt;At times the setup can get complicated and you may need to hop between multiple Jump server to reach the target server.
+This can be done via &lt;em&gt;ProxyCommand&lt;/em&gt; chaining like below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;Host jump_box
+  Hostname 192.168.6.50
+  User prashant
+  
+Host production_box
+  Hostname 10.10.19.20
+  User admin
+  ProxyCommand ssh -W %h:%p jump_box
+
+Host production_db_box
+  Hostname 10.10.19.23
+  User admin
+  ProxyCommand ssh -W %h:%p production_box
+  LocalForward 3306 127.0.0.1:3306
+
+&lt;span class=&quot;c&quot;&gt;#Next on command line you can&lt;/span&gt;
+ssh production_db_box&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;things-you-may-find-handy&quot;&gt;Things you may find handy&lt;/h1&gt;
+&lt;p&gt;You can execute a command on the remote machine without leaving your machine (shell), the command gets executed remotely and your connection is closed post that.&lt;/p&gt;
+
+&lt;p&gt;For being concise I’m using my config file as shortcut for ssh, you could substitue the standard &lt;em&gt;ssh user@remotebox&lt;/em&gt; as needed.&lt;/p&gt;
+
+&lt;p&gt;The below would connect to the remote machine then execute “df -h” on it and display the available and total space on the remote machine as ouput to your terminal.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh remotebox &lt;span class=&quot;s2&quot;&gt;&quot;df -h&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;
+A more advance usage, could be where you need to connect to a MySQL Slave server to check the Slave Running status as below:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh mysqlslave_server &lt;span class=&quot;s2&quot;&gt;&quot;mysql -u admin -p secret -e &#39;show slave status&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39; | grep Slave_SQL_Running:&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;
+If you wanted to have some interaction with the remote command before exiting you can do so with “-t” option.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh -t remotebox &lt;span class=&quot;s2&quot;&gt;&quot;top&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;
+Lets say we want to execute multiple commands on the remote machine.
+The below would create a file test.txt in the logged in users home directory then do a listing via the ls -l command.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh remotebox &lt;span class=&quot;s2&quot;&gt;&quot;touch test.txt; ls -l&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;br /&gt;
+&lt;em&gt;Cheers!&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 19 Feb 2015 05:36:00 +0530</pubDate>
+        <link>http://www.prashantp.org/linux/2015/02/19/how-to-ssh-linux/</link>
+        <guid isPermaLink="true">http://www.prashantp.org/linux/2015/02/19/how-to-ssh-linux/</guid>
+        
+        
+        <category>linux</category>
+        
+      </item>
     
   </channel>
 </rss>

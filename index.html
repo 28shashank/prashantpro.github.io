@@ -25,10 +25,10 @@ layout: default
 
 
           {% endfor %}
-          <!-- 分页 -->
+
       <div class="paginator">
               {% if paginator.total_pages > 1 %}
-              <!-- 分页代码 -->
+
               {% if paginator.previous_page %}
             <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Previous</a>
         {% endif %}
