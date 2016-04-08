@@ -19,7 +19,7 @@ disqus_url: "http://www.prashantp.org"
 
 # Build settings
 markdown: kramdown
-gems: [jekyll-paginate, jekyll-gist]
+gems: [jekyll-paginate, jekyll-gist, jekyll-sitemap]
 
 paginate: 10
 paginate_path: "page:num"
