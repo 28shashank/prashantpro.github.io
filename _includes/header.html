@@ -18,15 +18,15 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
 
-        {% if page.url == "/index.html" %}
+        {% if page.url == "/tanmayra/" %}
           <li class="active">
           {% else %}
           <li>
         {% endif %}
-          <a href="{{ site.baseurl }}/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+          <a href="{{ site.baseurl }}/tanmayra"><span class="glyphicon glyphicon-th-large"></span> Tanmayra</a></li>
 
         {% for p in site.pages %}
-          {% if p.title %}
+          {% if p.menu %}
             {% if p.url == page.url %}
               <li class="active">
               {% else %}

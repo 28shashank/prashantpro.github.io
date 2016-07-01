@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.prashantp.org/java/2015/05/06/strategy-pattern/</loc>
+<lastmod>2015-05-06T11:10:00+05:30</lastmod>
+</url>
+<url>
+<loc>http://www.prashantp.org/linux/2015/03/31/how-to-ssh-tunnel-background/</loc>
+<lastmod>2015-03-31T05:36:00+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.prashantp.org/linux/2015/02/19/how-to-ssh-linux/</loc>
-<lastmod>2015-02-19T05:36:00+05:30</lastmod>
+<lastmod>2015-02-19T17:36:00+05:30</lastmod>
 </url>
 <url>
 <loc>http://www.prashantp.org/about/</loc>
+</url>
+<url>
+<loc>http://www.prashantp.org/tanmayra/</loc>
 </url>
 <url>
 <loc>http://www.prashantp.org/</loc>

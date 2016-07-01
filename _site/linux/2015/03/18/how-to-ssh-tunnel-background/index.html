@@ -6,10 +6,10 @@
 	<!-- Tell IE to use latest rendering engine -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>About</title>
-	<meta name="description" content="One mans thoughts and learnings for another.">
+	<title>How to open a SSH tunnel and keep it running in background!</title>
+	<meta name="description" content="SSH tunnel">
 	
-	<link rel="canonical" href="http://www.prashantp.org/about/">
+	<link rel="canonical" href="http://www.prashantp.org/linux/2015/03/18/how-to-ssh-tunnel-background/">
 	<link rel="alternate" type="application/rss+xml" title="Prashant Padmanabhan" href="http://www.prashantp.org/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -62,8 +62,8 @@
         
           
             
-              <li class="active">
-              
+              <li>
+            
             <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
           
         
@@ -85,32 +85,80 @@
       <div class="row">
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
+      <header>
+        <h1>How to open a SSH tunnel and keep it running in background!</h1>
+        <p>Mar 18, 2015</p>
+      </header>
+      <hr>
       <article>
-        <blockquote>
-  <p>I build enterprise scale software using JEE and Open source technologies put together.  I spend most of my time hacking into technologies and exploring opportunities to adopt and leverage them.</p>
+        <ul id="markdown-toc">
+  <li><a href="#opening-a-ssh-tunnel" id="markdown-toc-opening-a-ssh-tunnel">Opening a ssh tunnel</a></li>
+</ul>
+
+<h1 id="opening-a-ssh-tunnel">Opening a ssh tunnel</h1>
+
+<p>Lets say we want to connect to a remote machine using SSH and open a tunnel then we can do so as shown in the previous post LINK_HERE.</p>
+
+<p>But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.</p>
+
+<p>Here’s how to do that:
+ssh -f -N _remote_username@the_remote_server_ip</p>
+
+<blockquote>
+  <p>The -f option will run the ssh command in the background just before execution. 
+Meaning it will allow for entering the password or other inputs before putting it in background.
+The -N option will signal that we don’t want to execute any remote commands.
+Both options have to be combined to get the desired effect.</p>
 </blockquote>
 
-<p>Professionally you can find me on <strong><a href="https://in.linkedin.com/in/prashantpadmanabhan">LinkedIn</a></strong></p>
-
+<p><em>Cheers!</em></p>
 
       </article>
       <hr>
-<!--
-     <div class="bdsharebuttonbox">
-        <a href="#" class="bds_more" data-cmd="more"></a>
-        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-        <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-        <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
-        <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-    </div>
-    <script>
-        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-    </script>
+      
+      <a href="/linux/2015/02/19/how-to-ssh-linux/">Previous blog：Using SSH for accessing remote server via a Jump Host and other handy things!</a><br>
+      
+      
+      <a href="/java/2015/05/06/pattern-strategy/">Next blog：What problem does Strategy Pattern solve</a>
+      
+      <hr><!--
+      	<div class="bdsharebuttonbox">
+            <a href="#" class="bds_more" data-cmd="more"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+            <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+            <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
+            <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+        </div>
+        <script>
+            window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
 -->
     </div>
-	    
+    
+    <!-- duoshuo.com javascript include code. -->    
+    
+    <!-- disqus.com javascript include code. -->
+	
+    <div class="post-area post comment">
+        <div id="disqus_thread"></div>
+    </div>
+	<script>
+		var disqus_config = function () {
+			this.page.url = "http://www.prashantp.org/linux/2015/03/18/how-to-ssh-tunnel-background/"; 
+			this.page.identifier = "/linux/2015/03/18/how-to-ssh-tunnel-background"; 
+		};
+		(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '//prashantporg.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	
+    
   </div>
+
   <div id="content" class="col-sm-3">
     <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
     <div id="myAffix" class="shadow-bottom-center hidden-xs" >
@@ -120,6 +168,7 @@
       <div class="content-text"></div>
     </div>
   </div>
+
 </div>
 
     </div>

@@ -6,10 +6,10 @@
 	<!-- Tell IE to use latest rendering engine -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>About</title>
-	<meta name="description" content="One mans thoughts and learnings for another.">
+	<title>What problem does Strategy Pattern solve</title>
+	<meta name="description" content="Design pattern">
 	
-	<link rel="canonical" href="http://www.prashantp.org/about/">
+	<link rel="canonical" href="http://www.prashantp.org/java/2015/05/06/pattern-strategy/">
 	<link rel="alternate" type="application/rss+xml" title="Prashant Padmanabhan" href="http://www.prashantp.org/feed.xml" />
 	
 	<!-- <link rel="stylesheet" href="/css/main.css"> -->
@@ -62,8 +62,8 @@
         
           
             
-              <li class="active">
-              
+              <li>
+            
             <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
           
         
@@ -85,32 +85,93 @@
       <div class="row">
   <div id="myArticle" class="col-sm-9">
     <div class="post-area post">
+      <header>
+        <h1>What problem does Strategy Pattern solve</h1>
+        <p>May 6, 2015</p>
+      </header>
+      <hr>
       <article>
-        <blockquote>
-  <p>I build enterprise scale software using JEE and Open source technologies put together.  I spend most of my time hacking into technologies and exploring opportunities to adopt and leverage them.</p>
+        <p>One of the major benefits of object oriented programming is code reuse.</p>
+
+<p>Inheritance is widely used to achieve this reuse, as it allows for defining the common behaviour and properties in a super class which all subclasses then inherit.
+The problem with inheritance is with its overuse.</p>
+
+<blockquote>
+  <p><strong>Issues with inheritance:</strong></p>
 </blockquote>
 
-<p>Professionally you can find me on <strong><a href="https://in.linkedin.com/in/prashantpadmanabhan">LinkedIn</a></strong></p>
+<blockquote>
+  <ul>
+    <li>Can’t change the behavior at runtime.</li>
+    <li>Super class behavior when changed will impact across all subclasses.</li>
+    <li>Not all subclasses may want the behavior of super class thus end up with duplicated code such as empty overrides or their own custom implementations which can’t be reused by other subclasses.</li>
+    <li>With above point, its hard to gain an understanding of all subclass by looking at a super class alone.</li>
+  </ul>
+</blockquote>
 
+<h4 id="could-interfaces-help">Could interfaces help?</h4>
+<p>It could solve some part of the problem, but would not allow for any reuse of code.
+As each implementing subclass would provide their own implementation.</p>
+
+<hr />
+
+<p><img src="/assets/images/why-strategy.png" alt="image-title-here" class="img-responsive" /></p>
+
+<hr />
+
+<blockquote>
+  <p><strong>Definition:</strong> 
+Strategy pattern defines a family of algorithms, encapsulates each one and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.</p>
+</blockquote>
+
+<p><img src="/assets/images/why-strategy-final.png" alt="image-title-here" class="img-responsive" /></p>
+
+<p>Cheers!</p>
 
       </article>
       <hr>
-<!--
-     <div class="bdsharebuttonbox">
-        <a href="#" class="bds_more" data-cmd="more"></a>
-        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-        <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-        <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
-        <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-    </div>
-    <script>
-        window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-    </script>
+      
+      <a href="/linux/2015/03/31/how-to-ssh-tunnel-background/">Previous blog：How to open a SSH tunnel and keep it running in background!</a><br>
+      
+      
+      <hr><!--
+      	<div class="bdsharebuttonbox">
+            <a href="#" class="bds_more" data-cmd="more"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+            <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+            <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
+            <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+        </div>
+        <script>
+            window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
 -->
     </div>
-	    
+    
+    <!-- duoshuo.com javascript include code. -->    
+    
+    <!-- disqus.com javascript include code. -->
+	
+    <div class="post-area post comment">
+        <div id="disqus_thread"></div>
+    </div>
+	<script>
+		var disqus_config = function () {
+			this.page.url = "http://www.prashantp.org/java/2015/05/06/pattern-strategy/"; 
+			this.page.identifier = "/java/2015/05/06/pattern-strategy"; 
+		};
+		(function() {
+			var d = document, s = d.createElement('script');
+			s.src = '//prashantporg.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+		})();
+	</script>
+	
+    
   </div>
+
   <div id="content" class="col-sm-3">
     <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
     <div id="myAffix" class="shadow-bottom-center hidden-xs" >
@@ -120,6 +181,7 @@
       <div class="content-text"></div>
     </div>
   </div>
+
 </div>
 
     </div>
