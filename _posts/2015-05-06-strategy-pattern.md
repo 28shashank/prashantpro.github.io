@@ -6,9 +6,8 @@ categories: java
 excerpt: Design pattern
 comments: true
 ---
-The idea of this post is to cover couple of essential aspects when using a pattern.
 
-I will try not to throw the pattern at you with all its rules but instead show you how one ends up using it, to correct the earlier design choices.
+There are plenty of articles covering this pattern, here I will try to cover the same from a perspective which I believe has helped me really understand what this pattern has to offer. I will try not to throw the pattern at you with all its rules but instead show you how one would end up using it, while correcting few erroneous design choices on the way.
 
 One of the major benefits of object oriented programming is code reuse.
 
