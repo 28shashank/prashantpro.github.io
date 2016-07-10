@@ -2,15 +2,12 @@
 layout: page
 title: Tanmayra
 menu: false
-permalink: /tanmayra/
+permalink: /multi-tenant-infuser/
 icon: glyphicon-play
 comments: false
 ---
 
-**MultiTenant Infuser**
-
-A Library to work with multiple tenants in a JEE 6 application.
-[The project](/multi-tenant-infuser)
+MultiTenant Infuser Library
 
 <!--
 {% for post in site.posts  %}
