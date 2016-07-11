@@ -3,7 +3,7 @@ layout: post
 title:  "What problem does Strategy Pattern solve"
 date:   2015-05-06 05:40:00
 categories: java
-excerpt: Design pattern
+excerpt: Understanding what strategy pattern has to offer and what design principles are promoted in its usage.
 comments: true
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  "Using SSH for accessing remote server via a Jump Host and other handy things!"
 date:   2015-02-19 12:06:00
 categories: linux
-excerpt: SSH into everything
+excerpt: Many usefull tips on how to use ssh and how to configure the config file for jump servers and more.
 comments: true
 ---
 
