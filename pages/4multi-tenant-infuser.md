@@ -7,7 +7,7 @@ icon: glyphicon-play
 comments: false
 ---
 
-MultiTenant Infuser Library
+MultiTenant Infuser Library (details coming soon).
 
 <!--
 {% for post in site.posts  %}
