@@ -10,7 +10,7 @@ layout: default
             <ul class="nav">
                
                 {% for post in site.posts %}
-                <li>
+                <li {% if post.title contains  site.posts.first.title %}class="active"{% endif %}>
                     <a href="{{ post.url | prepend: site.baseurl }}">
                                 {{ post.title_short }}
                                 <!--<span class="">{{ post.date | date: "%b %-d, %Y" }}</span>-->
