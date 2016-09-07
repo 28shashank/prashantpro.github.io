@@ -211,7 +211,7 @@ button {
 }
 
 .action-button {
-    background-color: #0d0579
+    background-color: #0072be
 }
 
 .action-button:active,
@@ -221,13 +221,13 @@ button {
 }
 
 .navbar-inverse {
-    background: #0d0579;
+    background: #0072be;
     border: none;
     margin-bottom: 0
 }
 
 .navbar-fixed-container {
-    background-color: #0d0579;
+    background-color: #0072be;
     height: 50px
 }
 
@@ -260,7 +260,7 @@ button {
 }
 
 .navbar-inverse.navbar-fixed-top {
-    background: #0d0579;
+    background: #0072be;
     border: none;
     margin-bottom: 0
 }
@@ -330,9 +330,7 @@ button {
     color: #fff
 }
 
-.navbar .navbar-right {
-    display: none
-}
+
 
 .navbar .navbar-right .link-button {
     color: #fff;
@@ -675,7 +673,7 @@ button {
 }
 
 .search .search-results .result h3 a {
-    color: #0d0579
+    color: #0072be
 }
 
 .search .search-results .snippet {
@@ -902,7 +900,7 @@ footer .copyright .logo {
     padding: 10px 0;
     font-size: 1.8rem;
     width: 240px;
-    background-color: #0d0579
+    background-color: #0072be
 }
 
 .alt-downloads .link-button small {
@@ -955,7 +953,7 @@ footer .copyright .logo {
     display: inline-block;
     color: #fff;
     cursor: pointer;
-    background-color: #0d0579;
+    background-color: #0072be;
     text-decoration: none;
     width: 280px
 }
@@ -1070,7 +1068,7 @@ ul.video-list .thumb {
 }
 
 .errors {
-    background-color: #0d0579;
+    background-color: #0072be;
     color: #fff
 }
 
@@ -1140,7 +1138,7 @@ ul.video-list .thumb {
 
 .home .jumbotron {
     overflow: hidden;
-    background-color: #0d0579;
+    background-color: #0072be;
     color: #fff;
     padding: 0
 }
@@ -1561,7 +1559,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .home .getting-started .caption .link-button {
-    background-color: #0d0579;
+    background-color: #0072be;
     color: #fff;
     margin: 20px 0
 }
@@ -1645,7 +1643,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 
 .home_c .jumbotron {
     overflow: hidden;
-    background-color: #0d0579;
+    background-color: #0072be;
     color: #fff;
     padding: 0
 }
@@ -2066,7 +2064,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .home_c .getting-started .caption .link-button {
-    background-color: #0d0579;
+    background-color: #0072be;
     color: #fff;
     margin: 20px 0
 }
@@ -2896,7 +2894,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 #docs-navbar .nav .panel.expanded a {
-    border-color: #0d0579
+    border-color: #0072be
 }
 
 #docs-navbar .nav .panel.expanded>a:hover {
@@ -2950,7 +2948,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 
 #docs-navbar>.nav>.active .active>a,
 #docs-navbar>.nav>.active>a {
-    color: #0d0579!important
+    color: #0072be!important
 }
 
 #docs-navbar>.nav>.active .active>a,
@@ -2963,7 +2961,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
     position: absolute;
     height: 7px;
     width: 7px;
-    background-color: #0d0579;
+    background-color: #0072be;
     top: 10px;
     left: -4px;
     border-radius: 100%
@@ -3064,7 +3062,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .docs .feedback .buttons button:hover {
-    background-color: #0d0579
+    background-color: #0072be
 }
 
 .docs .feedback .buttons button:disabled {
@@ -3142,7 +3140,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .docs .section h3 {
-    color: #0d0579;
+    color: #0072be;
     font-weight: 700
 }
 
@@ -3209,7 +3207,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .docs p span.ts[aria-expanded=true]:hover a {
-    color: #0d0579
+    color: #0072be
 }
 
 .docs p span.ts:hover {
@@ -3219,7 +3217,7 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
 }
 
 .docs p span.ts:hover a {
-    color: #0d0579
+    color: #0072be
 }
 
 .docs .details {
@@ -3576,4 +3574,9 @@ footer .point {
 	margin: 0 12px;
 	color:#2E2435;
 	font-weight: bold;
+}
+
+.post-date {
+    color: rgb(98, 93, 93);
+    font-size: 0.8em;
 }
