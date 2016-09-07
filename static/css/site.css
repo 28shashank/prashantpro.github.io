@@ -330,8 +330,6 @@ button {
     color: #fff
 }
 
-
-
 .navbar .navbar-right .link-button {
     color: #fff;
     font-size: 16px;
@@ -727,7 +725,7 @@ footer {
     position: absolute;
     left: 0;
     bottom: 0;
-    height: 135px;
+    height: 80px;
     width: 100%;
     background-color: #333;
     font-size: 12px;
