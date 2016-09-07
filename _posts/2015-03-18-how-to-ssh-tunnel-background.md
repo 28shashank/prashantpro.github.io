@@ -3,8 +3,9 @@ layout: post
 title:  "How to open a SSH tunnel and keep it running in background!"
 date:   2015-03-31 00:06:00
 categories: linux
-excerpt: SSH tunneling explained with focus on sending the session in the background.
+title_short: SSH tunneling kept alive
 comments: true
+author: Prashant Padmanabhan
 ---
 
 * content

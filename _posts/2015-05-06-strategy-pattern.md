@@ -3,8 +3,9 @@ layout: post
 title:  "What problem does Strategy Pattern solve"
 date:   2015-05-06 05:40:00
 categories: java
-excerpt: Understanding what strategy pattern has to offer and what design principles are promoted in its usage.
+title_short: Understanding strategy pattern
 comments: true
+author: Prashant Padmanabhan
 ---
 
 There are plenty of articles covering this pattern, here I will try to cover the same from a perspective which I believe has helped me really understand what this pattern has to offer. I will try not to throw the pattern at you with all its rules but instead show you how one would end up using it, while correcting few erroneous design choices on the way.

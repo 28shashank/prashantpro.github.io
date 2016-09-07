@@ -5,9 +5,9 @@
     <description>One mans thoughts and learnings for another.</description>
     <link>http://www.prashantp.org/</link>
     <atom:link href="http://www.prashantp.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 11 Jul 2016 10:53:13 +0530</pubDate>
-    <lastBuildDate>Mon, 11 Jul 2016 10:53:13 +0530</lastBuildDate>
-    <generator>Jekyll v3.1.6</generator>
+    <pubDate>Wed, 07 Sep 2016 17:45:32 +0530</pubDate>
+    <lastBuildDate>Wed, 07 Sep 2016 17:45:32 +0530</lastBuildDate>
+    <generator>Jekyll v3.2.1</generator>
     
       <item>
         <title>What problem does Strategy Pattern solve</title>
@@ -98,8 +98,8 @@ Strategy pattern defines a family of algorithms, encapsulates each one and makes
 &lt;p&gt;&lt;em&gt;Cheers!&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 06 May 2015 11:10:00 +0530</pubDate>
-        <link>http://www.prashantp.org/java/2015/05/06/strategy-pattern/</link>
-        <guid isPermaLink="true">http://www.prashantp.org/java/2015/05/06/strategy-pattern/</guid>
+        <link>http://www.prashantp.org/blog/java/2015/05/06/strategy-pattern.html</link>
+        <guid isPermaLink="true">http://www.prashantp.org/blog/java/2015/05/06/strategy-pattern.html</guid>
         
         
         <category>java</category>
@@ -116,7 +116,7 @@ Strategy pattern defines a family of algorithms, encapsulates each one and makes
 
 &lt;p&gt;This is more of a quick note which I required for setting up Apache to serve content via a SSH tunnel.&lt;/p&gt;
 
-&lt;p&gt;So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous &lt;a href=&quot;/linux/2015/02/19/how-to-ssh-linux/&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous &lt;a href=&quot;/blog/linux/2015/02/19/how-to-ssh-linux.html&quot;&gt;post&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.
 You could probably use other techniques, but this is the one I used.&lt;/p&gt;
@@ -136,8 +136,8 @@ Both options have to be combined to get the desired effect.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Cheers!&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 31 Mar 2015 05:36:00 +0530</pubDate>
-        <link>http://www.prashantp.org/linux/2015/03/31/how-to-ssh-tunnel-background/</link>
-        <guid isPermaLink="true">http://www.prashantp.org/linux/2015/03/31/how-to-ssh-tunnel-background/</guid>
+        <link>http://www.prashantp.org/blog/linux/2015/03/31/how-to-ssh-tunnel-background.html</link>
+        <guid isPermaLink="true">http://www.prashantp.org/blog/linux/2015/03/31/how-to-ssh-tunnel-background.html</guid>
         
         
         <category>linux</category>
@@ -298,7 +298,7 @@ ssh production_db_box&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;br /&gt;
 A more advance usage, could be where you need to connect to a MySQL Slave server to check the Slave Running status as below:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh mysqlslave_server &lt;span class=&quot;s2&quot;&gt;&quot;mysql -u admin -p secret -e &#39;show slave status&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39; | grep Slave_SQL_Running:&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;ssh mysqlslave_server &lt;span class=&quot;s2&quot;&gt;&quot;mysql -u admin -p secret -e 'show slave status&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\G&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;' | grep Slave_SQL_Running:&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;br /&gt;
 If you wanted to have some interaction with the remote command before exiting you can do so with “-t” option.&lt;/p&gt;
 
@@ -312,8 +312,8 @@ The below would create a file test.txt in the logged in users home directory the
 &lt;em&gt;Cheers!&lt;/em&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 19 Feb 2015 17:36:00 +0530</pubDate>
-        <link>http://www.prashantp.org/linux/2015/02/19/how-to-ssh-linux/</link>
-        <guid isPermaLink="true">http://www.prashantp.org/linux/2015/02/19/how-to-ssh-linux/</guid>
+        <link>http://www.prashantp.org/blog/linux/2015/02/19/how-to-ssh-linux.html</link>
+        <guid isPermaLink="true">http://www.prashantp.org/blog/linux/2015/02/19/how-to-ssh-linux.html</guid>
         
         
         <category>linux</category>
