@@ -129,6 +129,7 @@ list.forEach((s) -> System.out.println(s));
 {% endhighlight %}
 
 ---
+
 # Working with Date and time
 We have **LocalDateTime** which is "A date-time without a time-zone". So it can be used to represent
 birthdays, an event on a timeline without worrying about the time-zone.
