@@ -33,8 +33,8 @@
 
     <!-- Latest compiled and minified CSS -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href=" /static/css/site.css ">
     <link rel="stylesheet" type="text/css" href=" /static/css/bootstrap.min.css ">
+    <link rel="stylesheet" type="text/css" href=" /static/css/site.css ">
     <link rel="stylesheet" type="text/css" href=" /static/css/monokai_sublime.min.css ">
 
 
@@ -145,7 +145,7 @@
   <li><a href="#working-with-date-and-time" id="markdown-toc-working-with-date-and-time">Working with Date and time</a></li>
 </ul>
 
-<p>This should be helpful for those who already know java and would like to quickly go over what’s Java 8 all about.</p>
+<p>This should be helpful for those who already know java and would like to quickly go over what’s Java 8 all about in <strong>short</strong>!</p>
 
 <h1 id="introducing-class-javautilstringjoiner">Introducing class <strong>java.util.StringJoiner</strong></h1>
 
@@ -256,6 +256,10 @@ This class models a single instantaneous point on the time-line. This might be u
 
 <hr />
 <h1 id="working-with-date-and-time">Working with Date and time</h1>
+<p>We have <strong>LocalDateTime</strong> which is “A date-time without a time-zone”. So it can be used to represent
+birthdays, an event on a timeline without worrying about the time-zone.</p>
+
+<p>Also there is the new <strong>DateTimeFormatter</strong> this is a formatter for printing and parsing date-time objects.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">DateTimeFormatter</span> <span class="n">dtf</span> <span class="o">=</span> <span class="n">DateTimeFormatter</span><span class="o">.</span><span class="na">ofLocalizedDateTime</span><span class="o">(</span><span class="n">FormatStyle</span><span class="o">.</span><span class="na">SHORT</span><span class="o">);</span>
 <span class="n">LocalDateTime</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">LocalDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
@@ -263,6 +267,9 @@ This class models a single instantaneous point on the time-line. This might be u
 
 <span class="c1">//output - yours may differ</span>
 <span class="c1">//20/11/15 1:52 PM</span></code></pre></figure>
+
+<p>If you find yourself dealing with date-time of various time-zone then your friend is the new <strong>ZonedDateTime</strong>.
+This is a date-time with a time-zone.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ZonedDateTime</span> <span class="n">gmt</span> <span class="o">=</span> <span class="n">ZonedDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">(</span><span class="n">ZoneId</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"GMT+0"</span><span class="o">));</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gmt</span><span class="o">);</span>
@@ -280,9 +287,7 @@ This class models a single instantaneous point on the time-line. This might be u
 <span class="c1">//output</span>
 <span class="c1">//PT-5H-30M0.039S</span></code></pre></figure>
 
-<p>ZonedDateTime - This is a class which represents a date-time with a time-zone.</p>
-
-<p>Example:</p>
+<p>Another example of ZonedDateTime with the help of ZoneId for getting a time-zone based date and time.</p>
 
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">ZonedDateTime</span> <span class="n">riyadh</span> <span class="o">=</span> <span class="n">ZonedDateTime</span><span class="o">.</span><span class="na">now</span><span class="o">(</span><span class="n">ZoneId</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="s">"Asia/Riyadh"</span><span class="o">));</span>
 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">riyadh</span><span class="o">);</span>
@@ -295,8 +300,9 @@ This class models a single instantaneous point on the time-line. This might be u
 <figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">availableZoneIds</span> <span class="o">=</span> <span class="n">ZoneId</span><span class="o">.</span><span class="na">getAvailableZoneIds</span><span class="o">();</span>
 <span class="n">availableZoneIds</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">filter</span><span class="o">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="n">p</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"Asia"</span><span class="o">)).</span><span class="na">forEach</span><span class="o">(</span> <span class="n">i</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">));</span></code></pre></figure>
 
-<p>We have covered briefly on StringJoiner, Using Lambdas, and Working with Date and Time the Java 8 way.
-In the next post I will go over few more Java 8 essentials such as Streams and more lambda.</p>
+<p>We have covered briefly on StringJoiner, Using Lambdas, and Working with Date and Time the Java 8 way.</p>
+
+<p>In the next post I will go over few more Java 8 essentials such as Streams, Default methods and more.</p>
 
 <p><em>Happy learning!</em></p>
 

@@ -3,14 +3,14 @@ layout: post
 title:  "Java 8 quickly - Part 1"
 date:   2015-11-20 00:05:00
 categories: java
-title_short: Java 8 quickly - Part 1
+title_short: Java 8 quickly part 1
 comments: true
 author: Prashant Padmanabhan
 ---
 * content
 {:toc}
 
-This should be helpful for those who already know java and would like to quickly go over what's Java 8 all about.
+This should be helpful for those who already know java and would like to quickly go over what's Java 8 all about in **short**!
 
 # Introducing class **java.util.StringJoiner**
 
@@ -129,6 +129,10 @@ list.forEach((s) -> System.out.println(s));
 
 ---
 # Working with Date and time
+We have **LocalDateTime** which is "A date-time without a time-zone". So it can be used to represent
+birthdays, an event on a timeline without worrying about the time-zone.
+
+Also there is the new **DateTimeFormatter** this is a formatter for printing and parsing date-time objects.
 {% highlight java %}
 DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
 LocalDateTime dt = LocalDateTime.now();
@@ -138,6 +142,8 @@ System.out.println(dtf.format(dt));
 //20/11/15 1:52 PM
 {% endhighlight %}
 
+If you find yourself dealing with date-time of various time-zone then your friend is the new **ZonedDateTime**.
+This is a date-time with a time-zone.
 {% highlight java %}
 ZonedDateTime gmt = ZonedDateTime.now(ZoneId.of("GMT+0"));
 System.out.println(gmt);
@@ -157,9 +163,7 @@ System.out.println(diff);
 //PT-5H-30M0.039S
 {% endhighlight %}
 
-ZonedDateTime - This is a class which represents a date-time with a time-zone.
-
-Example:
+Another example of ZonedDateTime with the help of ZoneId for getting a time-zone based date and time.
 {% highlight java %}
 ZonedDateTime riyadh = ZonedDateTime.now(ZoneId.of("Asia/Riyadh"));
 System.out.println(riyadh);
@@ -175,6 +179,7 @@ availableZoneIds.stream().filter(p -> p.contains("Asia")).forEach( i -> System.o
 {% endhighlight %}
 
 We have covered briefly on StringJoiner, Using Lambdas, and Working with Date and Time the Java 8 way.
-In the next post I will go over few more Java 8 essentials such as Streams and more lambda.
+
+In the next post I will go over few more Java 8 essentials such as Streams, Default methods and more.
 
 *Happy learning!*
