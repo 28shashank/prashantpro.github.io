@@ -133,6 +133,13 @@
                
                 
                 <li class="active">
+                    <a href="/blog/linux/2015/06/27/find-lines-of-code.html">
+                                Finding large code files
+                                <!--<span class="">Jun 27, 2015</span>-->
+                    </a>
+                </li>
+                
+                <li >
                     <a href="/blog/java/2015/05/06/strategy-pattern.html">
                                 Understanding strategy pattern
                                 <!--<span class="">May 6, 2015</span>-->
@@ -160,6 +167,8 @@
             <select id="small-nav-dropdown">
                 
                 
+                <option value="/blog/linux/2015/06/27/find-lines-of-code.html"> Finding large code files</option>
+                
                 <option value="/blog/java/2015/05/06/strategy-pattern.html"> Understanding strategy pattern</option>
                 
                 <option value="/blog/linux/2015/03/31/how-to-ssh-tunnel-background.html"> SSH tunneling kept alive</option>
@@ -178,95 +187,50 @@
         
         <div class="post-area post">
     <header>        
-        <h4><u>Recent Post</u> -  What problem does Strategy Pattern solve</h4>                              
+        <h4><u>Recent Post</u> -  Finding large code files with one command</h4>                              
     </header>
     <hr>
     <article>
-        <p>There are plenty of articles covering this pattern, here I will try to cover the same from a perspective which I believe has helped me really understand what this pattern has to offer. I will try not to throw the pattern at you with all its rules but instead show you how one would end up using it, while correcting few erroneous design choices on the way.</p>
+        <p>Here’s a quick way to find unusually large files with many lines of code in your codebase.</p>
 
-<p>One of the major benefits of object oriented programming is code reuse.</p>
+<p>While there are many ways to refactor such code it all starts with finding the lengthy files first.
+You could use your favorite code analysis tools to do it. But if you are not sure about those then his simple linux command can come handy.</p>
 
-<p>Inheritance is widely used to achieve this reuse, as it allows for defining the common behaviour and properties in a super class which all subclasses then inherit.
-BUT the problem with inheritance is with its <strong><em>overuse</em></strong>.</p>
+<p>Here’s the command which will list the top 30 files sorted by number of lines in descending order.</p>
 
-<p>Check the below example which shows how certain requirement changes can lead to complications in an inheritance based design.</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find src/ -name <span class="s2">"*.java"</span> | xargs wc -l | sort -gr | head -30</code></pre></figure>
 
-<hr />
+<p>In case you are not sure what the above command does, then here’s how it works:</p>
 
-<p><img src="/assets/images/why-strategy.png" alt="image-title-here" class="img-responsive" /></p>
+<p>We are basically going to combine couple of commands to get to our desired output.</p>
 
-<blockquote>
-  <p><strong>Now let’s look at few of the issues with inheritance as depicted with the above design choices:</strong></p>
-</blockquote>
+<p>As an example below command will get the count of lines in one single file.</p>
 
-<blockquote>
-  <ul>
-    <li>You can’t change the behavior at runtime.</li>
-    <li>Super class behavior when changed will impact across all subclasses.</li>
-    <li>Not all subclasses may want the behavior of super class thus end up with duplicated code such as empty overrides or their own custom implementations which can’t be reused by other subclasses.</li>
-    <li>With above point, its hard to gain an understanding of all subclass by looking at a super class alone.</li>
-  </ul>
-</blockquote>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">wc -l src/main/java/com/fancyproject/mode/StackViewManager.java</code></pre></figure>
 
-<h4 id="could-interfaces-have-helped">Could interfaces have helped?</h4>
-<p>It could solve some part of the problem, but would not allow for any reuse of code.
-As each implementing subclass would provide their own implementation.</p>
+<p>While this command will find all java files.</p>
 
-<hr />
-<p>A more elegant solution can be achieved using a strategy pattern which promotes few design principles as well.</p>
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">find src/ -name <span class="s2">"*.java"</span></code></pre></figure>
 
-<blockquote>
-  <p><strong>Definition:</strong> 
-Strategy pattern defines a family of algorithms, encapsulates each one and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.</p>
-</blockquote>
+<p>So the entire command works like below:</p>
 
-<p>Let’s see how a revised design using the pattern would make our code much more flexible.</p>
+<p>The first part of the command finds all files with extension “.java” under the “src” folder.</p>
 
-<p><img src="/assets/images/why-strategy-final.png" alt="image-title-here" class="img-responsive" /></p>
+<p><strong>find src/ -name “*.java”</strong></p>
 
-<p>The above solution is a lot more flexible and still allows for code reuse!</p>
+<p>Then we pipe that output (file list) using xargs wc -l which finds the number of lines in each file.</p>
 
-<p>Here’s few code snippets of how the pattern appears in Java where subclass can set a different behavior:</p>
+<p><strong>xargs wc -l</strong></p>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="c1">//The Abstract Base class</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">UserAccount</span> <span class="o">{</span>
-	<span class="c1">//Default behavior</span>
-	<span class="kd">private</span> <span class="n">AccountVerification</span> <span class="n">verifier</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EmailVerification</span><span class="o">();</span>
-	<span class="kd">private</span> <span class="n">ActiveCheck</span> <span class="n">checker</span> <span class="o">=</span> <span class="k">new</span> <span class="n">MemberActive</span><span class="o">();</span>
+<p>Then we sort the list by the number of lines using the line count in descending order.</p>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAccountVerification</span><span class="o">(</span><span class="n">AccountVerification</span> <span class="n">verifier</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">verifier</span> <span class="o">=</span> <span class="n">verifier</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setActiveCheck</span><span class="o">(</span><span class="n">ActiveCheck</span> <span class="n">checker</span><span class="o">)</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">checker</span> <span class="o">=</span> <span class="n">checker</span><span class="o">;</span>
-	<span class="o">}</span>
-	<span class="c1">//Delegates the verification behavior to the set algorithm</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">performVerification</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">verifier</span><span class="o">.</span><span class="na">validate</span><span class="o">();</span>
-	<span class="o">}</span>
-	<span class="c1">//Delegates the check behavior to the set algorithm</span>
-	<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">performActiveCheck</span><span class="o">()</span> <span class="o">{</span>
-		<span class="k">this</span><span class="o">.</span><span class="na">checker</span><span class="o">.</span><span class="na">isAccountActive</span><span class="o">();</span>
-	<span class="o">}</span>
-<span class="o">}</span>
+<p><strong>sort -gr</strong></p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FreeMember</span> <span class="kd">extends</span> <span class="n">UserAccount</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">FreeMember</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">//The behavior is set by default but just to show that we could change it here.</span>
-		<span class="n">setAccountVerification</span><span class="o">(</span><span class="k">new</span> <span class="n">EmailVerification</span><span class="o">());</span>
-		<span class="n">setActiveCheck</span><span class="o">(</span><span class="k">new</span> <span class="n">MemberActive</span><span class="o">());</span>
-	<span class="o">}</span>
-<span class="o">}</span>
+<p>The last command is to limit the output to top 30</p>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Guest</span> <span class="kd">extends</span> <span class="n">UserAccount</span> <span class="o">{</span>
-	<span class="kd">public</span> <span class="nf">Guest</span><span class="o">()</span> <span class="o">{</span>
-		<span class="c1">//We need a different Algorithm/Strategy for Verification and ActiveCheck</span>
-		<span class="n">setAccountVerification</span><span class="o">(</span><span class="k">new</span> <span class="n">NoVerification</span><span class="o">());</span>
-		<span class="n">setActiveCheck</span><span class="o">(</span><span class="k">new</span> <span class="n">GuestActive</span><span class="o">());</span>
-	<span class="o">}</span>
-<span class="o">}</span></code></pre></figure>
+<p><strong>head -30</strong></p>
 
-<p><em>Cheers!</em></p>
+<p><em>That’s it, happy refactoring.</em></p>
 
     </article>
 </div>        
@@ -297,6 +261,13 @@ Strategy pattern defines a family of algorithms, encapsulates each one and makes
                 
                 <div post-cate="linux">
                           
+                    <a href="/blog/linux/2015/06/27/find-lines-of-code.html" class="post-list-item">
+                        <h2>
+                    Finding large code files with one command
+                    </h2>
+                        <span class="">Jun 27, 2015</span>
+                    </a>
+                      
                     <a href="/blog/linux/2015/03/31/how-to-ssh-tunnel-background.html" class="post-list-item">
                         <h2>
                     How to open a SSH tunnel and keep it running in background!

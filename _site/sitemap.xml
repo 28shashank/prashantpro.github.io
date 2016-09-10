@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>http://www.prashantp.org/blog/linux/2015/06/27/find-lines-of-code.html</loc>
+<lastmod>2015-06-27T05:34:00+05:30</lastmod>
+</url>
+<url>
 <loc>http://www.prashantp.org/blog/java/2015/05/06/strategy-pattern.html</loc>
 <lastmod>2015-05-06T11:10:00+05:30</lastmod>
 </url>
