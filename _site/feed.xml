@@ -5,8 +5,8 @@
     <description>One mans thoughts and learnings for another.</description>
     <link>http://www.prashantp.org/</link>
     <atom:link href="http://www.prashantp.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Sep 2016 14:59:27 +0530</pubDate>
-    <lastBuildDate>Sat, 10 Sep 2016 14:59:27 +0530</lastBuildDate>
+    <pubDate>Sat, 10 Sep 2016 15:02:39 +0530</pubDate>
+    <lastBuildDate>Sat, 10 Sep 2016 15:02:39 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -81,6 +81,7 @@ This class models a single instantaneous point on the time-line. This might be u
 &lt;span class=&quot;n&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;elapsed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toMillis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;hr /&gt;
+
 &lt;h1 id=&quot;next-up-lambdas&quot;&gt;Next up, Lambdas&lt;/h1&gt;
 &lt;p&gt;Here’s a traditional way to sort a collection.&lt;/p&gt;
 

@@ -76,6 +76,7 @@ System.out.println(elapsed.toMillis());
 {% endhighlight %}
 
 ---
+
 # Next up, Lambdas
 Here's a traditional way to sort a collection.
 
