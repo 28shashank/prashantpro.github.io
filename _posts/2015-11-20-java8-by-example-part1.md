@@ -13,6 +13,7 @@ author: Prashant Padmanabhan
 This should be helpful for those who already know java and would like to quickly go over what's Java 8 all about in **short** with some examples!
 
 For Lambdas you can checkout [part 2]({% post_url 2016-01-18-java8-by-example-part2 %})
+
 # Introducing class **java.util.StringJoiner**
 
 From the Java Doc for the class:
@@ -77,6 +78,7 @@ System.out.println(elapsed.toMillis());
 {% endhighlight %}
 
 ---
+
 # Working with Date and time
 
 We have **LocalDateTime** which is "A date-time without a time-zone". So it can be used to represent
