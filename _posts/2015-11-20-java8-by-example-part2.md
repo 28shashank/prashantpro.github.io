@@ -56,6 +56,7 @@ new Thread(r).start();
 {% endhighlight %}
 
 ---
+
 # Next up, using lambdas
 Here's a traditional way to sort a collection.
 
