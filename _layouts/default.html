@@ -3,8 +3,6 @@
 
 {% include head.html %}
 
-<!--  <body data-spy="scroll" data-target="#myAffix"> -->
-
 <body>
 
     {% include header.html %}
@@ -26,18 +24,6 @@
 
     {% include footer.html %}
 
-
-    <script type="text/javascript">
-        function addBlankTargetForLinks() {
-            $('a[href^="http"]').each(function() {
-                $(this).attr('target', '_blank');
-            });
-        }
-
-        $(document).bind('DOMNodeInserted', function(event) {
-            addBlankTargetForLinks();
-        });
-    </script>
 </body>
 
 </html>

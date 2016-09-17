@@ -11,7 +11,7 @@ author: Prashant Padmanabhan
 Here's a quick way to find unusually large files with many lines of code in your codebase.
 
 While there are many ways to refactor such code it all starts with finding the lengthy files first.
-You could use your favorite code analysis tools to do it. But if you are not sure about those then his simple linux command can come handy.
+You could use your favorite code analysis tools to do it. But if you are not sure about those then this simple linux command can come handy.
 
 Here's the command which will list the top 30 files sorted by number of lines in descending order.
 

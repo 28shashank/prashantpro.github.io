@@ -7,7 +7,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
+                        <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
                     <p class="navbar-text hidden-xs">Architect @work</p>
@@ -20,7 +20,7 @@
 
                         <li {% if page.url contains "/blog" %}class="active"{% endif %}>
                         <a id="nav-blogs" href="/blog">Blog</a>
-                        </li>                        
+                        </li>
                         <!-- <li><a href="/tanmayra">Project</a></li> -->
                         <!-- <li class='search visible-xs'><a href="/Search">Search</a></li> -->
                     </ul>
@@ -33,45 +33,6 @@
                 </div>
             </div>
         </nav>
-    </div>
-
-    <!-- navbar 
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-           
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
-                <p class="navbar-text">Architect @work</p>
-            </div>
-        
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    {% if page.url == "/tanmayra/" %}
-                    <li class="active">
-                        {% else %}
-                        <li>
-                            {% endif %}
-                            <a href="{{ site.baseurl }}/tanmayra"><span class="glyphicon glyphicon-th-large"></span> Tanmayra</a></li>
-
-                        {% for p in site.pages %} {% if p.menu %} {% if p.url == page.url %}
-                        <li class="active">
-                            {% else %}
-                            <li>
-                                {% endif %}
-                                <a href="{{ p.url | prepend: site.baseurl }}"><span class="glyphicon {{ p.icon }}"></span> {{ p.title }}</a></li>
-                            {% endif %} {% endfor %}
-                </ul>
-            </div>
-           
-        </div>
-     
-    </nav>-->
+    </div> 
 
 </header>

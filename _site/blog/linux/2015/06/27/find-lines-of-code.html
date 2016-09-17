@@ -2,7 +2,15 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8"> <!-- Begin Jekyll SEO tag v2.0.0 -->
+    <meta charset="UTF-8">
+    <!-- Tell IE to use latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="canonical" href="http://www.prashantp.org/blog/linux/2015/06/27/find-lines-of-code.html">
+    <link rel="alternate" type="application/rss+xml" title="Prashant Padmanabhan" href="http://www.prashantp.org /feed.xml " />
+
+    <!-- Begin Jekyll SEO tag v2.0.0 -->
 <title>Finding large code files with one command - Prashant Padmanabhan</title>
 <meta property="og:title" content="Finding large code files with one command" />
 <meta name="description" content="Here’s a quick way to find unusually large files with many lines of code in your codebase." />
@@ -23,27 +31,14 @@
   }
 </script>
 <!-- End Jekyll SEO tag -->
-    <!-- Tell IE to use latest rendering engine -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="canonical" href="http://www.prashantp.org/blog/linux/2015/06/27/find-lines-of-code.html">
-    <link rel="alternate" type="application/rss+xml" title="Prashant Padmanabhan" href="http://www.prashantp.org /feed.xml " />
-
-
-    <!-- Latest compiled and minified CSS -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    
     <link rel="stylesheet" type="text/css" href=" /static/css/bootstrap.min.css ">
     <link rel="stylesheet" type="text/css" href=" /static/css/site.css ">
     <link rel="stylesheet" type="text/css" href=" /static/css/monokai_sublime.min.css ">
 
-
-
-
 </head>
 
-
-<!--  <body data-spy="scroll" data-target="#myAffix"> -->
 
 <body>
 
@@ -56,7 +51,7 @@
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
+                        <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">Prashant Padmanabhan</a>
                     <p class="navbar-text hidden-xs">Architect @work</p>
@@ -69,7 +64,7 @@
 
                         <li class="active">
                         <a id="nav-blogs" href="/blog">Blog</a>
-                        </li>                        
+                        </li>
                         <!-- <li><a href="/tanmayra">Project</a></li> -->
                         <!-- <li class='search visible-xs'><a href="/Search">Search</a></li> -->
                     </ul>
@@ -82,48 +77,10 @@
                 </div>
             </div>
         </nav>
-    </div>
-
-    <!-- navbar 
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-           
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="/">Prashant Padmanabhan</a>
-                <p class="navbar-text">Architect @work</p>
-            </div>
-        
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                    
-                        <li>
-                            
-                            <a href="/tanmayra"><span class="glyphicon glyphicon-th-large"></span> Tanmayra</a></li>
-
-                          
-                            <li>
-                                
-                                <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
-                               
-                            <li>
-                                
-                                <a href="/rubiks/"><span class="glyphicon glyphicon-heart"></span> Rubik's</a></li>
-                                         
-                </ul>
-            </div>
-           
-        </div>
-     
-    </nav>-->
+    </div> 
 
 </header>
+
 
 
     <div role="main" id="main-content">
@@ -134,7 +91,7 @@
         <div class="post-area post">
             <header>
                 <h1>Finding large code files with one command</h1>
-                <h4>Posted on 27 June 2015 , By <a href="https://www.linkedin.com/in/prashantpadmanabhan">Prashant Padmanabhan</a></h4>                      
+                <h4>Posted on 27 June 2015 , By <a href="https://www.linkedin.com/in/prashantpadmanabhan">Prashant Padmanabhan</a></h4>
             </header>
             <hr>
             <article>
@@ -184,20 +141,8 @@ You could use your favorite code analysis tools to do it. But if you are not sur
             <a href="/blog/java/2015/05/06/strategy-pattern.html">Previous blog：What problem does Strategy Pattern solve</a><br>  
             <a href="/blog/java/2015/11/20/java8-quickly-part1.html">Next blog：Java 8 quickly - Part 1</a> 
             <hr>
-            
-            <!--
-      	<div class="bdsharebuttonbox">
-            <a href="#" class="bds_more" data-cmd="more"></a>
-            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-            <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
-            <a href="#" class="bds_fbook" data-cmd="fbook" title="Share to Facebook"></a>
-            <a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a>
-        </div>
-        <script>
-            window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
--->
+
+          
         </div>
         
     <!-- duoshuo.com javascript include code. -->    
@@ -231,14 +176,14 @@ You could use your favorite code analysis tools to do it. But if you are not sur
 
             <ul class="nav">
 
-               
+
 
             </ul>
             <!--
-            <a class="twitter-share-button" href="https://twitter.com/share" 
-                data-text="New blog from prashantp.org" 
-                data-via="Code" 
-                data-counturl="//blog/linux/2015/06/27/find-lines-of-code.html" 
+            <a class="twitter-share-button" href="https://twitter.com/share"
+                data-text="New blog from prashantp.org"
+                data-via="Code"
+                data-counturl="//blog/linux/2015/06/27/find-lines-of-code.html"
                 data-count="vertical">
                 Tweet
             </a>
@@ -247,10 +192,11 @@ You could use your favorite code analysis tools to do it. But if you are not sur
         </nav>
     </div>
 
-    
-    
-    
+
+
+
 </div>
+
         </div>
     </div>
 
@@ -280,14 +226,12 @@ You could use your favorite code analysis tools to do it. But if you are not sur
                 
                 <span class="point"> · </span>
                 <span><a href="/feed.xml">RSS</a></span>
-                <span class="point"> · </span>           
+                <span class="point"> · </span>
                 <span>One mans thoughts and learnings for another.</span>
             </div>
              <div class="col-md-3">
                 <span class="point"> · </span>
                 <span>&copy; 2016 prashantp.org</span>
-            </div>
-
             </div>
         </div>
     </div>
@@ -320,6 +264,16 @@ You could use your favorite code analysis tools to do it. But if you are not sur
         }), $("#small-nav-dropdown").change(function() {
             window.location = this.value
         });
+
+        function addBlankTargetForLinks() {
+            $('a[href^="http"]').each(function() {
+                $(this).attr('target', '_blank');
+            });
+        }
+
+        $(document).bind('DOMNodeInserted', function(event) {
+            addBlankTargetForLinks();
+        });
     </script>
 
     <script>
@@ -337,17 +291,6 @@ You could use your favorite code analysis tools to do it. But if you are not sur
 </footer>
 
 
-    <script type="text/javascript">
-        function addBlankTargetForLinks() {
-            $('a[href^="http"]').each(function() {
-                $(this).attr('target', '_blank');
-            });
-        }
-
-        $(document).bind('DOMNodeInserted', function(event) {
-            addBlankTargetForLinks();
-        });
-    </script>
 </body>
 
 </html>

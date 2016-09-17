@@ -1,17 +1,18 @@
 ---
 layout: post
-title:  "Java 8 quickly - Part 1"
+title:  "Java 8 by example - Part 1"
 date:   2015-11-20 00:05:00
 categories: java
-title_short: Java 8 quickly part 1
+title_short: Java 8 part 1
 comments: true
 author: Prashant Padmanabhan
 ---
 * content
 {:toc}
 
-This should be helpful for those who already know java and would like to quickly go over what's Java 8 all about in **short**!
+This should be helpful for those who already know java and would like to quickly go over what's Java 8 all about in **short** with some examples!
 
+For Lambdas you can checkout [part 2]({% post_url 2016-01-18-java8-by-example-part2 %})
 # Introducing class **java.util.StringJoiner**
 
 From the Java Doc for the class:
@@ -52,7 +53,7 @@ System.out.println(sj);
 Apple and Grape and Orange
 {% endhighlight %}
 
-***
+---
 
 # Next up, we have the **Instant** class from **java.time** package.
 From the Java Doc for this class:
@@ -76,60 +77,6 @@ System.out.println(elapsed.toMillis());
 {% endhighlight %}
 
 ---
-
-# Next up, Lambdas
-Here's a traditional way to sort a collection.
-
-{% highlight java %}
-List<String> list = new ArrayList<String>();
-list.add("apple");
-list.add("orange");
-list.add("Grape");
-System.out.println("Case sensitive sort");
-Collections.sort(list);
-// Not using lambda
-for(String s : list) {
- System.out.println(s);
-}
-{% endhighlight %}
-
-Now if you had to sort the collection in a case insensitive way then this can be done as below:
-
-{% highlight java %}
-//Continued code from above
-System.out.println("\nCase in-sensitive sort");
-// Not using lambda
-Collections.sort(list, new Comparator<String>() {
-  @Override
-  public int compare(String o1, String o2) {
-    return o1.compareToIgnoreCase(o2);
-  }
-});
-//Print the sorted list using Java 5 introduced for each loop
-for(String s : list) {
-	System.out.println(s);
-}
-{% endhighlight %}
-
-Now to do it the **java 8** way which would be a lot more effecient.
-{% highlight java %}
-List<String> list = new ArrayList<String>();
-list.add("apple");
-list.add("orange");
-list.add("Grape");
-
-System.out.println("\nCase in-sensitive lambda sort");
-Comparator<String> comparator = (arg1, arg2) -> arg1.compareToIgnoreCase(arg2);
-
-//Sort using the above comparator
-Collections.sort(list, comparator);
-
-//For each using Lambda
-list.forEach((s) -> System.out.println(s));
-{% endhighlight %}
-
----
-
 # Working with Date and time
 
 We have **LocalDateTime** which is "A date-time without a time-zone". So it can be used to represent

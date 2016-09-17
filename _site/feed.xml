@@ -5,9 +5,27 @@
     <description>One mans thoughts and learnings for another.</description>
     <link>http://www.prashantp.org/</link>
     <atom:link href="http://www.prashantp.org/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 10 Sep 2016 15:05:09 +0530</pubDate>
-    <lastBuildDate>Sat, 10 Sep 2016 15:05:09 +0530</lastBuildDate>
+    <pubDate>Sat, 10 Sep 2016 18:59:58 +0530</pubDate>
+    <lastBuildDate>Sat, 10 Sep 2016 18:59:58 +0530</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Java 8 quickly - Part 2</title>
+        <description>
+&lt;p&gt;This is a follow up on the previous article &lt;a href=&quot;/blog/java/2015/11/20/java8-quickly-part1.html&quot;&gt;part 1&lt;/a&gt; for Java 8 quickly.&lt;/p&gt;
+
+&lt;p&gt;This should be helpful for those who already know java and would like to quickly go over what’s Java 8 all about in &lt;strong&gt;short&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Happy learning!&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Jan 2016 05:44:00 +0530</pubDate>
+        <link>http://www.prashantp.org/blog/java/2016/01/18/java8-quickly-part2.html</link>
+        <guid isPermaLink="true">http://www.prashantp.org/blog/java/2016/01/18/java8-quickly-part2.html</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
     
       <item>
         <title>Java 8 quickly - Part 1</title>
