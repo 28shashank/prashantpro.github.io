@@ -17,10 +17,8 @@ layout: default
             <hr> {% if page.previous %}
             <a href="{{page.previous.url | prepend:site.baseurl | replace:'//','/'}}">Previous blog：{{page.previous.title}}</a><br> {% endif %} {% if page.next %}
             <a href="{{page.next.url | prepend:site.baseurl | replace:'//','/'}}">Next blog：{{page.next.title}}</a> {% endif %}
-            <hr>
-
-          
-        </div>
+            <hr/>
+        </div>       
         {% include comments.html %}
     </div>
 
@@ -45,6 +43,9 @@ layout: default
             </a>
             <div class="connect-widget"></div>
             -->
+             <hr/>
+             {% include newsletter.html %}
+        
         </nav>
     </div>
 
