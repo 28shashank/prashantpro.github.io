@@ -2,7 +2,7 @@
 layout: post
 title:  "Angular 2 with Google Charts Easy way"
 date:   2016-11-20 12:06:00
-categories: Website
+categories: Angular
 title_short: Angular 2 with Google Charts
 comments: true
 author: Prashant Padmanabhan

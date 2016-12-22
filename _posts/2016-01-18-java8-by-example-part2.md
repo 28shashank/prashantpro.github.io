@@ -2,7 +2,7 @@
 layout: post
 title:  "Java 8 by example - Part 2"
 date:   2016-01-18 00:14:00
-categories: java
+categories: Java
 title_short: Java 8 part 2
 comments: true
 author: Prashant Padmanabhan

@@ -2,7 +2,7 @@
 layout: post
 title:  "Angular 2 deployment on Apache with Docker"
 date:   2016-12-02 12:06:00
-categories: Website
+categories: Angular
 title_short: Angular 2 with Docker
 comments: true
 author: Prashant Padmanabhan

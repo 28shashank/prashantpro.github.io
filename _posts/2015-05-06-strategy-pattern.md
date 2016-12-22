@@ -2,7 +2,7 @@
 layout: post
 title:  "What problem does Strategy Pattern solve"
 date:   2015-05-06 05:40:00
-categories: java
+categories: Java
 title_short: Understanding strategy pattern
 comments: true
 author: Prashant Padmanabhan

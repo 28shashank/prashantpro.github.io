@@ -2,7 +2,7 @@
 layout: post
 title:  "Finding large code files with one command"
 date:   2015-06-27 00:04:00
-categories: linux
+categories: Linux
 title_short: Finding large code files
 comments: true
 author: Prashant Padmanabhan

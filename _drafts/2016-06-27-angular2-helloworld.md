@@ -2,7 +2,7 @@
 layout: post
 title:  "Angular 2 Building a sample project"
 date:   2016-06-27 12:06:00
-categories: Website
+categories: Angular
 title_short: Angular 2 Sample project
 comments: true
 author: Prashant Padmanabhan
