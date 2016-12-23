@@ -10,11 +10,11 @@ comments: false
 
 ![image-title-here](/assets/images/me.jpg){:class="img-left"}
 
-> I consider myself a coding architect who builds enterprise scale software using JEE and Open source technologies 
-put together. I spend most of my time hacking into technologies and exploring opportunities to adopt and leverage them.
-When I have time to kill, I love to solve the rubik's cube.
-
-
+> Been developing softwares since 2002 and still loving it. Professionally I have over 10 years experience and I consider myself a coding architect who builds enterprise scale software using Java, JEE & Open source technologies 
+put together. <br/> <br/>
+I spend most of my time hacking into frameworks, libraries, Linux and exploring opportunities to adopt and leverage them.
+When I have time to kill, I love to solve the rubik's cube and spend time with my two little daughters.<br/>
+I have built this site as I wanted to share my thoughts and learnings as knowledge articles.<br/> I maintain the site using Jekyll and GitHub pages.
 
 ***
 
