@@ -19,7 +19,7 @@ This is my attempt to help those who wish to learn to do things a bit more elega
 Picking the right tool for the job is not an easy task, with the advent of so many frameworks and libraries for delivering web applications.
 Here let us assume you have picked Angular and Java as your choice for the next big thing you are working upon.
 
-I will be showing you in two parts the entire process of building a frontend in Angular 2 with TypeScript and the backend in Java EE over the next few posts on my blog.
+I will be showing you in next few posts the entire process of building a frontend in Angular 2 with TypeScript and the backend in Java EE over the next few posts on my blog.
 
 Angular JS (Angular 2) is a popular framework, you can checkout [Google trends](https://www.google.com/trends/explore?q=Angular%202) for reference.
 As a developer this can be a great tool in your arsenal!
