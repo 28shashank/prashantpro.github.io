@@ -3582,8 +3582,18 @@ footer .point {
 blockquote {
     border-top: 1px solid #d3d3d3;
     border-bottom: 1px solid #d3d3d3;
-    border-left: 4px solid #0a89cf;
-    font-family: monospace;
+    border-left: 4px solid #0a89cf;    
     background: #fff;
     font-size: 1.4rem;
+}
+
+/* change border radius for the tab , apply corners on top*/
+#post-tab .nav-tabs > li > a {
+  border-radius: 4px 4px 0 0;
+}
+
+#post-tab .tab-content {  
+  padding : 5px 15px; 
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
 }
