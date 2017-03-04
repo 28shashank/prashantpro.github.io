@@ -19,6 +19,8 @@ layout: default
             <a href="{{page.next.url | prepend:site.baseurl | replace:'//','/'}}">Next blog：{{page.next.title}}</a> {% endif %}
             <hr/>
         </div>       
+        {% include adsense_leaderboard.html %}
+
         {% include comments.html %}
     </div>
 
@@ -45,6 +47,8 @@ layout: default
             -->
              <hr/>
              {% include newsletter.html %}
+             <hr/>
+             {% include adsense_respbanner.html %}
         
         </nav>
     </div>
