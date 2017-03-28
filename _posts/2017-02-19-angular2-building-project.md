@@ -15,11 +15,11 @@ Most of us follow a *hello world* sample for even our professional projects that
 The same non production grade code soon becomes a technical debt needing a revisit.
 This is my attempt to help those who wish to learn to do things a bit more elegantly when getting started.
 
-## Overview
+## Angular and Java beyond hello world
 Picking the right tool for the job is not an easy task, with the advent of so many frameworks and libraries for delivering web applications.
 Here let us assume you have picked Angular and Java as your choice for the next big thing you are working upon.
 
-I will be showing you in next few posts the entire process of building a frontend in Angular 2 with TypeScript and the backend in Java EE over the next few posts on my blog.
+I will be showing you in next few posts the entire process of building a frontend in Angular 2 with TypeScript and the backend in Java EE.
 
 Angular JS (Angular 2) is a popular framework, you can checkout [Google trends](https://www.google.com/trends/explore?q=Angular%202) for reference.
 As a developer this can be a great tool in your arsenal!
@@ -28,12 +28,12 @@ Here I go over few of the things which should help you get started the right way
 
 ### What you will be learning in the next few posts to follow this.
 1. Setting up an Angular 2 Project
-2. Local development
-3. Publishing to Apache
-4. Third party library integration
-5. Using docker for deployment
-6. Building the Java EE backend
-7. Structuring the project using maven
+2. [Structuring frontend and backend using maven]({% post_url 2017-03-24-angular2-javaee-project %})
+3. Local development
+4. Publishing to Apache
+5. Third party library integration
+6. Using docker for deployment
+7. Building the Java EE backend
 
 Wow that's quite a handful, but that's what a real life project brings. So don't get overwhelmed if you are new to this, but stick around to see this project unfold.
 
@@ -104,10 +104,21 @@ Let's install angular-cli first. (Ignore if you already have it by following *Me
 npm install -g angular-cli
 {% endhighlight %}
 
-Now create the project. We will call it **ng-reportapp** and use SCSS (Sass enabled) along with routing.
+Now create the project by creating a folder called "report-viewer" and initialize Git in that same directory.
+{% highlight bash %}
+mkdir report-viewer
+cd report-viewer
+git init .
+{% endhighlight %}
 
-`ng new ng-reportapp --style=scss --routing`
+Next lets create the ng-reportapp within the same directory.
+We will call it **ng-reportapp** and use SCSS (Sass enabled) along with routing.
 
+{% highlight bash %}
+ng new ng-reportapp --style=scss --routing
+{% endhighlight %}
+
+The output of ng command would look similar to below:
 ![Angular 2 Project](/assets/images/ng_new_reportapp.png){:class="img-responsive"}
 
 Now with the project created lets give it a run.
@@ -130,4 +141,4 @@ Installation of VS Code on linux is covered [here](https://code.visualstudio.com
 
 Open the project folder in VS Code.
 
-*In the next part, we will start building the UI components*
+*In [part 2]({% post_url 2017-03-24-angular2-javaee-project %}), we will start building the UI components and structure the project*
