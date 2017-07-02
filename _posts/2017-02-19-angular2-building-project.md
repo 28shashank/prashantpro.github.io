@@ -69,7 +69,7 @@ With above the site should be running locally at this URL: http://localhost:3000
 **Method 2**: **Preferred** Use [Angular CLI](https://cli.angular.io/)
 Below few lines show the steps to setup angular CLI and use it to build and run a new project.
 {% highlight bash %}
-npm install -g angular-cli
+npm install -g @angular/cli
 ng new ng-helloworld
 cd ng-helloworld
 ng serve 
@@ -101,7 +101,7 @@ Let's get started!
 
 Let's install angular-cli first. (Ignore if you already have it by following *Method 2* above).
 {% highlight bash %}
-npm install -g angular-cli
+npm install -g @angular/cli
 {% endhighlight %}
 
 Now create the project by creating a folder called "report-viewer" and initialize Git in that same directory.
