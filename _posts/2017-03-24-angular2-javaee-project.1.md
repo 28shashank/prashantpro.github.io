@@ -126,7 +126,7 @@ Now, create a pom.xml under ng-reportapp, with the following contents:
                                     <argument>build</argument>
                                     <argument>--prod</argument>
                                     <argument>--base-href</argument>
-                                    <argument>"/ng-reportapp/"</argument>
+                                    <argument>/ng-reportapp/</argument>
                                 </arguments>
                             </configuration>
                             <phase>generate-resources</phase>
