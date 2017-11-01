@@ -140,6 +140,8 @@ Now, create a pom.xml under ng-reportapp, with the following contents:
         </build>
     </project>
 
+The *--base-href* value used here is "/ng-reportapp", this is the context under which the Angular App would run.
+
 >If you run **mvn clean install** on this project then it will in turn invoke the ng command which would build the ng-reportapp project.
 
 It's time to create our backend module **jee-report**, so lets execute the following:
@@ -178,6 +180,7 @@ You can replace the generated pom.xml with the below contents.
         </dependency>
     </dependencies>
     <build>
+        <finalName>jee-report</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -234,7 +237,7 @@ Then you will see that first it builds the Angular project then Web Project, whi
 
 So you get an output similar to the below in the WAR/Web project output directory.
 
-report-viewer/jee-report/target/jee-report-1.0-SNAPSHOT.war
+report-viewer/jee-report/target/jee-report.war
 
     .
     ├── favicon.ico
@@ -250,7 +253,25 @@ report-viewer/jee-report/target/jee-report-1.0-SNAPSHOT.war
         ├── classes
         └── web.xml
 
+Since our Angular App has the --base-href set at */ng-reportapp* our WAR file must be deployed using this context. The approach of changing the context is specific to the server we use. 
+
+For JBoss/Wildfly this can be done, by creating a **jboss-web.xml** under WEB-INF folder, with the below content:
+
+{% highlight bash %}
+<?xml version="1.0"?>
+<jboss-web>
+   <context-root>/ng-reportapp</context-root>
+</jboss-web>
+{% endhighlight %}
+
+Once deployed the application would be available on this URL: (Assuming defaults)
+
+http://localhost:8080/ng-reportapp/
+
 This can now be deployed as a WAR on any JEE web container!
+>We could simply remove the --base-href option from ng-reportapp/pom.xml which would then mean, the app would be available on the root "/" context. So the WAR context should be set accordingly.
+
+
 
 ### Conclusion
 Given the angular module and java ee modules are independent, these can be built and deployed separately.
