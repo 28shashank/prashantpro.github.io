@@ -3006,6 +3006,15 @@ only screen and (min-width:1200px) and (min-resolution:192dpi) {
     vertical-align: top
 }
 
+#docs-subnavbar .book-button {
+    margin-top: 15px;
+    margin-left: 10px;
+}
+.promotion-text {
+    color: #058f2d;
+    font-size: 14px;
+}
+
 #docs-subnavbar .fb-like,
 #docs-subnavbar .twitter-share-button {
     margin-top: 15px;
