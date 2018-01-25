@@ -3611,11 +3611,14 @@ blockquote {
     font-size: 12px;
     text-decoration: none;
     font-weight: 600;
-    margin-top: 17px;
+    margin-top: 14px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .photo-container {
-  width: 140px; 
+    width: 140px; 
 }
 .my-pic {
     /* box-shadow: 4px 2px 5px black;
@@ -3671,4 +3674,43 @@ blockquote {
 
 #book-promote {
 
+}
+
+.find-me {
+    margin-top: 10px;
+}
+
+.about-img {
+position: relative;
+width: 200px;
+height: 200px;
+overflow: hidden;
+border-radius: 50%;
+}
+
+.about-img img {
+width: 100%;
+height: auto;
+margin-top: -22px;
+}
+
+.book-points {
+    list-style-type: square;    
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    color: #066c84;
+}
+.book-title {
+    color: #066c84;
+}
+.book-title> a {
+    font-size: 14px;
+    margin-left: 10px;
+}
+.book-points > li {
+    margin-top: 10px;
+}
+.book-img {
+    width: 240px;
+    margin: auto;
 }
