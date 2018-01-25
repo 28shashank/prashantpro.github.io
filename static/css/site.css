@@ -3606,3 +3606,69 @@ blockquote {
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
 }
+
+.contact-me {
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 17px;
+}
+
+.photo-container {
+  width: 140px; 
+}
+.my-pic {
+    /* box-shadow: 4px 2px 5px black;
+    width: 100%;
+    margin-bottom: 5px; */
+
+    position: relative;
+    padding-bottom: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+    transform: scale(1);
+    border: 2px solid transparent;
+    transition: all ease-in .2s;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,0.05);
+}
+
+.my-pic>img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    min-height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.pic-img {
+    vertical-align: middle;
+    border: 0;
+    max-width: 100%;
+    height: auto;
+}
+.not-important {
+    font-size: 14px;
+}
+
+.about-text {
+    color: #2d3033;
+}
+
+.author-name {
+    font-weight: 200;
+    font-size: 2.53333rem;
+    line-height: 1.25;
+    margin-bottom: 1.5rem;
+    letter-spacing: .01em;
+    color: #2d3033;
+}
+
+#book-promote {
+
+}
