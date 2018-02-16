@@ -13,49 +13,31 @@
 
 <script>
 
-function calculate() {
-    var scrollTop = $(window).scrollTop();
-    var docHeight = $(document).height();
-    var winHeight = $(window).height();
-    var scrollPercent = (scrollTop) / (docHeight - winHeight);
-    var scrollPercentRounded = Math.round(scrollPercent*100);
-
-    $('#scrollPercentLabel>a>span').html(scrollPercentRounded);
-}
-
-function backToTop() {
-    $(window).resize(function(){
-        // repositionLabel();
+$(document).ready(function() {
+    var $w = $(window);
+    var $circ = $('.animated-circle');
+    var $progCount = $('.progress-count');
+    var wh = $w.height();
+    var h = $('.page__inner-wrap').height();
+    var sHeight = h - wh;
+    $w.on('scroll', function(){
+        var perc = Math.max(0, Math.min(1, $w.scrollTop()/sHeight));
+        updateProgress(perc);
     });
+ 
+    function updateProgress(perc){
+        var circle_offset = 126 * perc;
+        $circ.css({
+            "stroke-dashoffset" : 126 - circle_offset
+        });
+        $progCount.html(Math.round(perc * 100) + "%");
+    }
 
-   $(window).scroll(function() {
-       if ($(window).scrollTop() > 100) {
-           $("#scrollPercentLabel").fadeIn(500);
-           calculate();
-        //    repositionLabel();
-       } else {
-           $("#scrollPercentLabel").fadeOut(500);
-       }
-   });
-   
-   $("#scrollPercentLabel").click(function() {
+    $(".progress-indicator").click(function() {
        $("body,html").animate({
            scrollTop: "0"
        }, 500);
    });
-
-   function repositionLabel() {
-    $('#scrollPercentLabel').css({
-        position:'fixed',
-        left: ($(window).width() - $('#scrollPercentLabel').outerWidth()) / 2,
-        top: (($(window).height() - $('#scrollPercentLabel').outerHeight()) / 2) - $('#scrollPercentLabel').height()
-    });
-   }
-
-}
-
-$(document).ready(function() {
-    backToTop();
 });
 
 </script>

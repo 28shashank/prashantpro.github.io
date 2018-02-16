@@ -4,7 +4,10 @@
       <nav id="site-nav" class="greedy-nav">
         <a class="site-title" href="{{ '/' | absolute_url }}">
           <img src="/assets/images/logo.png"/> 
-          {{ site.title }} {{ site.title_separator }}<span class="name-title"> {{ site.name }}</span></a>
+        </a>
+        <a class="site-title" href="{{ '/' | absolute_url }}">
+          {{ site.title }} {{ site.title_separator }}<span class="name-title"> {{ site.name }}</span>
+        </a>
         <ul class="visible-links">
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}

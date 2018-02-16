@@ -67,12 +67,17 @@ layout: default
       {% include comments.html %}
     {% endif %}
   </article>
-
-  <div id="scrollPercentLabel" data-toggle="tooltip" data-placement="left" title="" 
-  data-original-title="back to top" style="display: block;"> 
-    <a href="javascript:;">
-      <span class="stick-percent">0</span>%
-    </a> 
+  
+  <div class="progress-indicator">
+      <svg>
+          <g>
+              <circle cx="0" cy="0" r="20" class="animated-circle" transform="translate(50,50) rotate(-90)"  />
+          </g>
+          <g>
+              <circle cx="0" cy="0" r="38" transform="translate(50,50)"  />
+          </g>
+      </svg>
+      <div class="progress-count"></div>
   </div>
 
   {% comment %}<!-- only show related on a post page when `related: true` -->{% endcomment %}
