@@ -1,7 +1,6 @@
 ---
 layout: single
 permalink: /books/
-#title: "Books"
 author_profile: false
 classes: wide
 sidebar:
