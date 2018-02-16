@@ -14,6 +14,10 @@ $masthead-link-color-hover: mix(#000, $menu-link-color, 25%) !default;
 $menu-link-color: #ff9c00;
 $footer-background-color: #332e2e;
 
+.search__toggle {
+  color: #ff9c00 !important;
+}
+
 .name-title {
   color: #ff9c00 !important;
   font-weight: 300;

@@ -11,6 +11,7 @@ sidebar:
     text: "<a class='btn btn--success' href='http://a.co/5CdFcAM'>Buy</a>"
 ---
 
+
 # Java EE 8 and Angular
 
 A practical guide to building modern single-page applications with Angular and Java EE 8 - **for Java developers.**
