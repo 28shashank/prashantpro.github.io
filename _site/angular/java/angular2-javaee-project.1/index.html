@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Structuring Angular and Java projects - All things Java and more</title>
+<meta name="description" content="Frontend and Backend setupIn the first part, I shared how you would begin setting up an Angular 2 project (Part 1).Before diving further into Angular, let’s structure the codebase so we can work with both frontend and backend.">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="All things Java and more">
+<meta property="og:title" content="Structuring Angular and Java projects">
+<meta property="og:url" content="/angular/java/angular2-javaee-project.1/">
+
+
+  <meta property="og:description" content="Frontend and Backend setupIn the first part, I shared how you would begin setting up an Angular 2 project (Part 1).Before diving further into Angular, let’s structure the codebase so we can work with both frontend and backend.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2017-03-24T17:40:00+05:30">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/angular/java/angular2-javaee-project.1/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Prashant Padmanabhan",
+      "url": null,
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="All things Java and more Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet" type="text/css" />
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+<script>
+
+function calculate() {
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = (scrollTop) / (docHeight - winHeight);
+    var scrollPercentRounded = Math.round(scrollPercent*100);
+
+    $('#scrollPercentLabel>a>span').html(scrollPercentRounded);
+}
+
+function backToTop() {
+    $(window).resize(function(){
+        // repositionLabel();
+    });
+
+   $(window).scroll(function() {
+       if ($(window).scrollTop() > 100) {
+           $("#scrollPercentLabel").fadeIn(500);
+           calculate();
+        //    repositionLabel();
+       } else {
+           $("#scrollPercentLabel").fadeOut(500);
+       }
+   });
+   
+   $("#scrollPercentLabel").click(function() {
+       $("body,html").animate({
+           scrollTop: "0"
+       }, 500);
+   });
+
+   function repositionLabel() {
+    $('#scrollPercentLabel').css({
+        position:'fixed',
+        left: ($(window).width() - $('#scrollPercentLabel').outerWidth()) / 2,
+        top: (($(window).height() - $('#scrollPercentLabel').outerHeight()) / 2) - $('#scrollPercentLabel').height()
+    });
+   }
+
+}
+
+$(document).ready(function() {
+    backToTop();
+});
+
+</script>
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">All things Java and more -<span class="name-title"> Prashant Padmanabhan</span></a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/books/" >Books</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/categories/" >Posts</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/about-prashantp/" >About</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/me.jpg" alt="Prashant Padmanabhan" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Prashant Padmanabhan</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        All things Java and more.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Mumbai, IN</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:prashant.pro@gmail.com">
+            <meta itemprop="email" content="prashant.pro@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/prashantpadmanabhan" itemprop="sameAs">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/prashantpro" itemprop="sameAs">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Structuring Angular and Java projects">
+    <meta itemprop="description" content="Frontend and Backend setupIn the first part, I shared how you would begin setting up an Angular 2 project (Part 1).Before diving further into Angular, let’s structure the codebase so we can work with both frontend and backend.">
+    <meta itemprop="datePublished" content="March 24, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Structuring Angular and Java projects
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#frontend-and-backend-setup">Frontend and Backend setup</a>
+    <ul>
+      <li><a href="#create-multi-module-project-for-angular-and-jee">Create Multi module project for Angular and JEE</a></li>
+      <li><a href="#maven-configuration">Maven configuration</a></li>
+      <li><a href="#conclusion">Conclusion</a></li>
+    </ul>
+  </li>
+</ul>
+            </nav>
+          </aside>
+        
+        <h2 id="frontend-and-backend-setup">Frontend and Backend setup</h2>
+<p>In the first part, I shared how you would begin setting up an Angular 2 project <a href="/angular/java/angular2-building-project/">(Part 1)</a>.
+Before diving further into Angular, let’s structure the codebase so we can work with both frontend and backend.</p>
+
+<p>Let’s visualize how the communication between Angular and Java would work.
+Here there are two popular approaches (1) and (2) each having some pros and cons.</p>
+
+<p><img src="/assets/images/ng_javaee_deployment.png" alt="Angula and Java Deployed" class="img-responsive" /></p>
+
+<p>We need a way to structure the project such that the decision of picking a deployment strategy can be delayed if not changed as needed later.</p>
+
+<p>The choice of deployment can be influenced by many factors:</p>
+<ul>
+  <li>Is the same team going to work on frontend and backend</li>
+  <li>Do we need independent releases of frontent vs backend</li>
+  <li>and so on…</li>
+</ul>
+
+<blockquote>
+  <p>The goal is to use a structure that’s flexible and in turn allows us to pick either of the deployment choice.</p>
+</blockquote>
+
+<p>So let’s see how to use maven to create a multi module project where the frontend and backend are modules.
+These can later be worked upon and deployed independent of each other or combined as one release.</p>
+
+<h3 id="create-multi-module-project-for-angular-and-jee">Create Multi module project for Angular and JEE</h3>
+
+<p>The recommended way to build an Angular 2 application is to make use of Angular CLI tool. 
+Similarly when you work with Java EE projects you typically use Maven as the build tool.</p>
+
+<p>If you have followed along from the earlier part then you must already have the ng-reportapp created under report-viewer.
+In case you did, then skip the below and move on to the maven configuration section.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">mkdir </span>report-viewer
+<span class="nb">cd </span>report-viewer
+git init .</code></pre></figure>
+
+<p>Next lets create the ng-reportapp within the same directory.
+We will call it <strong>ng-reportapp</strong> and use SCSS (Sass enabled) along with routing.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">ng new ng-reportapp <span class="nt">--style</span><span class="o">=</span>scss <span class="nt">--routing</span></code></pre></figure>
+
+<h3 id="maven-configuration">Maven configuration</h3>
+<p>If you wish to download the setup code then just clone it like below:</p>
+
+<p><code class="highlighter-rouge">git clone -b report-viewer-01 https://github.com/prashantpro/report-viewer.git</code></p>
+
+<p>If you wish to do this manually then follow along.</p>
+
+<p>Create a pom.xml under report-viewer with the following content.</p>
+
+<p><strong>report-viewer/pom.xml</strong> - This is the parent pom</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.prashantp<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>report-viewer<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>pom<span class="nt">&lt;/packaging&gt;</span>
+
+    <span class="nt">&lt;modules&gt;</span>
+        <span class="nt">&lt;module&gt;</span>ng-reportapp<span class="nt">&lt;/module&gt;</span>
+        <span class="nt">&lt;module&gt;</span>jee-report<span class="nt">&lt;/module&gt;</span>
+    <span class="nt">&lt;/modules&gt;</span>
+
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>The parent pom.xml needs to list both modules. The <strong>first</strong> module should be the UI (Angular 2) module followed by the Java/Spring module.</p>
+</blockquote>
+
+<p>Now, create a pom.xml under ng-reportapp, with the following contents:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+    <span class="nt">&lt;parent&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.prashantp<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>report-viewer<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/parent&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>ng-reportapp<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>    
+    
+    <span class="nt">&lt;build&gt;</span>
+        <span class="nt">&lt;plugins&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>maven-clean-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>3.0.0<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;configuration&gt;</span>
+                    <span class="nt">&lt;failOnError&gt;</span>false<span class="nt">&lt;/failOnError&gt;</span>
+                    <span class="nt">&lt;filesets&gt;</span>
+                        <span class="nt">&lt;fileset&gt;</span>
+                            <span class="nt">&lt;directory&gt;</span>.<span class="nt">&lt;/directory&gt;</span>
+                            <span class="nt">&lt;includes&gt;</span>
+                                <span class="nt">&lt;include&gt;</span>dist/**/*.*<span class="nt">&lt;/include&gt;</span>
+                            <span class="nt">&lt;/includes&gt;</span>
+                            <span class="nt">&lt;followSymlinks&gt;</span>false<span class="nt">&lt;/followSymlinks&gt;</span>
+                        <span class="nt">&lt;/fileset&gt;</span>
+                    <span class="nt">&lt;/filesets&gt;</span>
+                <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;executions&gt;</span>
+                    <span class="nt">&lt;execution&gt;</span>
+                        <span class="nt">&lt;id&gt;</span>angular-cli build<span class="nt">&lt;/id&gt;</span>
+                        <span class="nt">&lt;configuration&gt;</span>
+                            <span class="nt">&lt;workingDirectory&gt;</span>.<span class="nt">&lt;/workingDirectory&gt;</span>
+                            <span class="nt">&lt;executable&gt;</span>ng<span class="nt">&lt;/executable&gt;</span>
+                            <span class="nt">&lt;arguments&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>build<span class="nt">&lt;/argument&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>--prod<span class="nt">&lt;/argument&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>--base-href<span class="nt">&lt;/argument&gt;</span>
+                                <span class="nt">&lt;argument&gt;</span>/ng-reportapp/<span class="nt">&lt;/argument&gt;</span>
+                            <span class="nt">&lt;/arguments&gt;</span>
+                        <span class="nt">&lt;/configuration&gt;</span>
+                        <span class="nt">&lt;phase&gt;</span>generate-resources<span class="nt">&lt;/phase&gt;</span>
+                        <span class="nt">&lt;goals&gt;</span>
+                            <span class="nt">&lt;goal&gt;</span>exec<span class="nt">&lt;/goal&gt;</span>
+                        <span class="nt">&lt;/goals&gt;</span>
+                    <span class="nt">&lt;/execution&gt;</span>
+                <span class="nt">&lt;/executions&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<p>The <em>–base-href</em> value used here is “/ng-reportapp”, this is the context under which the Angular App would run.</p>
+
+<blockquote>
+  <p>If you run <strong>mvn clean install</strong> on this project then it will in turn invoke the ng command which would build the ng-reportapp project.</p>
+</blockquote>
+
+<p>It’s time to create our backend module <strong>jee-report</strong>, so lets execute the following:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">cd </span>report-viewer
+mvn archetype:generate <span class="nt">-DgroupId</span><span class="o">=</span>org.prashantp <span class="nt">-DartifactId</span><span class="o">=</span>jee-report <span class="nt">-DarchetypeArtifactId</span><span class="o">=</span>maven-archetype-webapp <span class="nt">-DinteractiveMode</span><span class="o">=</span><span class="nb">false</span></code></pre></figure>
+
+<p>You can replace the generated pom.xml with the below contents.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">"http://maven.apache.org/POM/4.0.0"</span> <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+<span class="nt">&lt;parent&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.prashantp<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>report-viewer<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/parent&gt;</span>
+<span class="nt">&lt;artifactId&gt;</span>jee-report<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
+
+<span class="nt">&lt;name&gt;</span>jee-report<span class="nt">&lt;/name&gt;</span>
+
+<span class="nt">&lt;properties&gt;</span>
+    <span class="nt">&lt;project.build.sourceEncoding&gt;</span>UTF-8<span class="nt">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="nt">&lt;maven.compiler.target&gt;</span>1.8<span class="nt">&lt;/maven.compiler.target&gt;</span>
+    <span class="nt">&lt;maven.compiler.source&gt;</span>1.8<span class="nt">&lt;/maven.compiler.source&gt;</span>
+<span class="nt">&lt;/properties&gt;</span>
+
+<span class="nt">&lt;dependencies&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>javax<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>javaee-web-api<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>7.0<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;finalName&gt;</span>jee-report<span class="nt">&lt;/finalName&gt;</span>
+    <span class="nt">&lt;resources&gt;</span>
+        <span class="nt">&lt;resource&gt;</span>
+            <span class="nt">&lt;directory&gt;</span>src/main/resources<span class="nt">&lt;/directory&gt;</span>
+        <span class="nt">&lt;/resource&gt;</span>
+    <span class="nt">&lt;/resources&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>maven-war-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>2.3<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+            <span class="nt">&lt;failOnMissingWebXml&gt;</span>false<span class="nt">&lt;/failOnMissingWebXml&gt;</span>
+            <span class="nt">&lt;webResources&gt;</span>
+                <span class="nt">&lt;resource&gt;</span>
+                    <span class="c">&lt;!-- this is relative to the pom.xml directory --&gt;</span>
+                    <span class="nt">&lt;directory&gt;</span>../ng-reportapp/dist/<span class="nt">&lt;/directory&gt;</span>
+                <span class="nt">&lt;/resource&gt;</span>
+            <span class="nt">&lt;/webResources&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>The maven-war-plugin configuration is responsible for copying the Angular output (<strong>dist</strong> directory) 
+and map it into the web application project for the UI part.</p>
+</blockquote>
+
+<p>Based on what we did so far you should be having the below structure:</p>
+
+<p><strong>cd report-viewer</strong> (This is the parent POM project)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>report-viewer *$ tree -L 2 -I node_modules
+.
+├── jee-report
+│   ├── pom.xml               -- This is for Java EE module
+│   └── src
+├── ng-reportapp
+│   ├── e2e
+│   ├── karma.conf.js
+│   ├── package.json
+│   ├── pom.xml               -- This is to build NG project using maven
+│   ├── protractor.conf.js
+│   ├── README.md
+│   ├── src
+│   ├── tsconfig.json
+│   └── tslint.json
+└── pom.xml                   -- This is the parent POM
+</code></pre></div></div>
+
+<p>Build the project from the parent directory <strong>report-viewer</strong></p>
+
+<p><code class="highlighter-rouge">mvn clean install</code></p>
+
+<p>Then you will see that first it builds the Angular project then Web Project, while doing the build for the latter it also copies the Angular dist contents into the Web projects root.</p>
+
+<p>So you get an output similar to the below in the WAR/Web project output directory.</p>
+
+<p>report-viewer/jee-report/target/jee-report.war</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── favicon.ico
+├── index.html
+├── index.jsp
+├── inline.5f3bf811002370d445df.bundle.js
+├── main.cc8715308ebee677bf36.bundle.js
+├── META-INF
+├── polyfills.f52c146b4f7d1751829e.bundle.js
+├── styles.d41d8cd98f00b204e980.bundle.css
+├── vendor.dc285188c4ac5c470953.bundle.js
+└── WEB-INF
+    ├── classes
+    └── web.xml
+</code></pre></div></div>
+
+<p>Since our Angular App has the –base-href set at <em>/ng-reportapp</em> our WAR file must be deployed using this context. The approach of changing the context is specific to the server we use.</p>
+
+<p>For JBoss/Wildfly this can be done, by creating a <strong>jboss-web.xml</strong> under WEB-INF folder, with the below content:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;?xml <span class="nv">version</span><span class="o">=</span><span class="s2">"1.0"</span>?&gt;
+&lt;jboss-web&gt;
+   &lt;context-root&gt;/ng-reportapp&lt;/context-root&gt;
+&lt;/jboss-web&gt;</code></pre></figure>
+
+<p>Once deployed the application would be available on this URL: (Assuming defaults)</p>
+
+<p>http://localhost:8080/ng-reportapp/</p>
+
+<p>This can now be deployed as a WAR on any JEE web container!</p>
+<blockquote>
+  <p>We could simply remove the –base-href option from ng-reportapp/pom.xml which would then mean, the app would be available on the root “/” context. So the WAR context should be set accordingly.</p>
+</blockquote>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>Given the angular module and java ee modules are independent, these can be built and deployed separately.
+For a more cohesive option, we can combine the output of UI (Angular) and bundle it within the war itself.</p>
+
+<p>We have so far seen how to build an Angular CLI project and how to structure it to work with a backend solution.
+Next part, will be about coding the UI components followed by the backend API.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#angular" class="page__taxonomy-item" rel="tag">Angular</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/#java" class="page__taxonomy-item" rel="tag">Java</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-03-24T17:40:00+05:30">March 24, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Structuring+Angular+and+Java+projects%20%2Fangular%2Fjava%2Fangular2-javaee-project.1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Fangular%2Fjava%2Fangular2-javaee-project.1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=%2Fangular%2Fjava%2Fangular2-javaee-project.1%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Fangular%2Fjava%2Fangular2-javaee-project.1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/angular/java/angular2-building-project/" class="pagination--pager" title="Angular 2+ with Java EE
+">Previous</a>
+    
+    
+      <a href="/java/javaee-8-gettingstarted/" class="pagination--pager" title="Java EE 8 Starter
+">Next</a>
+    
+  </nav>
+
+    </div>
+    
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a Comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+    
+  </article>
+
+  <div id="scrollPercentLabel" data-toggle="tooltip" data-placement="left" title="" 
+  data-original-title="back to top" style="display: block;"> 
+    <a href="javascript:;">
+      <span class="stick-percent">0</span>%
+    </a> 
+  </div>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/javaee-8-gettingstarted/" rel="permalink">Java EE 8 Starter
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">If you haven’t heard already, then let me share the good news. The long awaited wait for Java EE 8 is finally over, as Oracle has officially released Java EE...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/angular/java/angular2-building-project/" rel="permalink">Angular 2+ with Java EE
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Getting started the right way
+Most of us follow a hello world sample for even our professional projects that we need to get on with.
+The same non production ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/linux/solus/" rel="permalink">Setup Solus Linux for development
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Updated for Solus 1.2 on Dec’16.
+
+</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/java8-by-example-part2/" rel="permalink">Java 8 by example - Part 2
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">This is a follow up on the previous article part 1 for Java 8 by example.
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/prashantpro"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="/sitemap.xml"><i class="fas fa-fw fa-sitemap" aria-hidden="true"></i> Sitemap</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Prashant Padmanabhan.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76164648-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/angular/java/angular2-javaee-project.1/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/angular/java/angular2-javaee-project.1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      console.log(this.page.url);
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://prashantporg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+  </body>
+</html>

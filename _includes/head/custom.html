@@ -1,0 +1,53 @@
+<!-- start custom head snippets -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet" type="text/css" />
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+<script>
+
+function calculate() {
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = (scrollTop) / (docHeight - winHeight);
+    var scrollPercentRounded = Math.round(scrollPercent*100);
+
+    $('#scrollPercentLabel>a>span').html(scrollPercentRounded);
+}
+
+function backToTop() {
+    $(window).resize(function(){
+        // repositionLabel();
+    });
+
+   $(window).scroll(function() {
+       if ($(window).scrollTop() > 100) {
+           $("#scrollPercentLabel").fadeIn(500);
+           calculate();
+        //    repositionLabel();
+       } else {
+           $("#scrollPercentLabel").fadeOut(500);
+       }
+   });
+   
+   $("#scrollPercentLabel").click(function() {
+       $("body,html").animate({
+           scrollTop: "0"
+       }, 500);
+   });
+
+   function repositionLabel() {
+    $('#scrollPercentLabel').css({
+        position:'fixed',
+        left: ($(window).width() - $('#scrollPercentLabel').outerWidth()) / 2,
+        top: (($(window).height() - $('#scrollPercentLabel').outerHeight()) / 2) - $('#scrollPercentLabel').height()
+    });
+   }
+
+}
+
+$(document).ready(function() {
+    backToTop();
+});
+
+</script>
+<!-- end custom head snippets -->

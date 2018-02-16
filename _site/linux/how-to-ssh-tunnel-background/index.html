@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>How to open a SSH tunnel and keep it running in background! - All things Java and more</title>
+<meta name="description" content="Opening a ssh tunnelThis is more of a quick note which I required for setting up Apache to serve content via a SSH tunnel.So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous post.But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.You could probably use other techniques, but this is the one I used.Here’s how to do that:ssh -f -N _remote_username@the_remote_server_ip  The -f option will run the ssh command in the background just before execution. Meaning it will allow for entering the password or other inputs before putting it in background.The -N option will signal that we don’t want to execute any remote commands.Both options have to be combined to get the desired effect.This will return you to the command prompt but still keep the SSH connection and tunnel open.Cheers!">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="All things Java and more">
+<meta property="og:title" content="How to open a SSH tunnel and keep it running in background!">
+<meta property="og:url" content="/linux/how-to-ssh-tunnel-background/">
+
+
+  <meta property="og:description" content="Opening a ssh tunnelThis is more of a quick note which I required for setting up Apache to serve content via a SSH tunnel.So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous post.But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.You could probably use other techniques, but this is the one I used.Here’s how to do that:ssh -f -N _remote_username@the_remote_server_ip  The -f option will run the ssh command in the background just before execution. Meaning it will allow for entering the password or other inputs before putting it in background.The -N option will signal that we don’t want to execute any remote commands.Both options have to be combined to get the desired effect.This will return you to the command prompt but still keep the SSH connection and tunnel open.Cheers!">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2015-03-31T05:36:00+05:30">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="/linux/how-to-ssh-tunnel-background/">
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Prashant Padmanabhan",
+      "url": null,
+      "sameAs": null
+    }
+  </script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="All things Java and more Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if lte IE 9]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet" type="text/css" />
+<!-- insert favicons. use http://realfavicongenerator.net/ -->
+<script>
+
+function calculate() {
+    var scrollTop = $(window).scrollTop();
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
+    var scrollPercent = (scrollTop) / (docHeight - winHeight);
+    var scrollPercentRounded = Math.round(scrollPercent*100);
+
+    $('#scrollPercentLabel>a>span').html(scrollPercentRounded);
+}
+
+function backToTop() {
+    $(window).resize(function(){
+        // repositionLabel();
+    });
+
+   $(window).scroll(function() {
+       if ($(window).scrollTop() > 100) {
+           $("#scrollPercentLabel").fadeIn(500);
+           calculate();
+        //    repositionLabel();
+       } else {
+           $("#scrollPercentLabel").fadeOut(500);
+       }
+   });
+   
+   $("#scrollPercentLabel").click(function() {
+       $("body,html").animate({
+           scrollTop: "0"
+       }, 500);
+   });
+
+   function repositionLabel() {
+    $('#scrollPercentLabel').css({
+        position:'fixed',
+        left: ($(window).width() - $('#scrollPercentLabel').outerWidth()) / 2,
+        top: (($(window).height() - $('#scrollPercentLabel').outerHeight()) / 2) - $('#scrollPercentLabel').height()
+    });
+   }
+
+}
+
+$(document).ready(function() {
+    backToTop();
+});
+
+</script>
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    <div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="/">All things Java and more -<span class="name-title"> Prashant Padmanabhan</span></a>
+        <ul class="visible-links">
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/books/" >Books</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/categories/" >Posts</a>
+            </li>
+          
+            
+            <li class="masthead__menu-item">
+              <a href="/about-prashantp/" >About</a>
+            </li>
+          
+        </ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle Menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/me.jpg" alt="Prashant Padmanabhan" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Prashant Padmanabhan</h3>
+    
+    
+      <p class="author__bio" itemprop="description">
+        All things Java and more.
+      </p>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="http://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Mumbai, IN</span>
+        </li>
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:prashant.pro@gmail.com">
+            <meta itemprop="email" content="prashant.pro@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://www.linkedin.com/in/prashantpadmanabhan" itemprop="sameAs">
+            <i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+        <li>
+          <a href="https://github.com/prashantpro" itemprop="sameAs">
+            <i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="How to open a SSH tunnel and keep it running in background!">
+    <meta itemprop="description" content="Opening a ssh tunnelThis is more of a quick note which I required for setting up Apache to serve content via a SSH tunnel.So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous post.But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.You could probably use other techniques, but this is the one I used.Here’s how to do that:ssh -f -N _remote_username@the_remote_server_ip  The -f option will run the ssh command in the background just before execution. Meaning it will allow for entering the password or other inputs before putting it in background.The -N option will signal that we don’t want to execute any remote commands.Both options have to be combined to get the desired effect.This will return you to the command prompt but still keep the SSH connection and tunnel open.Cheers!">
+    <meta itemprop="datePublished" content="March 31, 2015">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">How to open a SSH tunnel and keep it running in background!
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  less than 1 minute read
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="opening-a-ssh-tunnel">Opening a ssh tunnel</h2>
+
+<p>This is more of a quick note which I required for setting up Apache to serve content via a SSH tunnel.</p>
+
+<p>So lets say we want to connect to a remote machine using SSH and open a tunnel, this we can do as shown in the previous <a href="/linux/how-to-ssh-linux/">post</a>.</p>
+
+<p>But what if you wanted to open the tunnel and keep it running in the background, so you don’t have to keep the terminal open all the time.
+You could probably use other techniques, but this is the one I used.</p>
+
+<p>Here’s how to do that:</p>
+
+<p class="notice">ssh -f -N _remote_username@the_remote_server_ip</p>
+
+<blockquote>
+  <p>The -f option will run the ssh command in the background just before execution. 
+Meaning it will allow for entering the password or other inputs before putting it in background.
+The -N option will signal that we don’t want to execute any remote commands.
+Both options have to be combined to get the desired effect.</p>
+</blockquote>
+
+<p>This will return you to the command prompt but still keep the SSH connection and tunnel open.</p>
+
+<p><em>Cheers!</em></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#linux" class="page__taxonomy-item" rel="tag">Linux</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-03-31T05:36:00+05:30">March 31, 2015</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=How+to+open+a+SSH+tunnel+and+keep+it+running+in+background%21%20%2Flinux%2Fhow-to-ssh-tunnel-background%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=%2Flinux%2Fhow-to-ssh-tunnel-background%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=%2Flinux%2Fhow-to-ssh-tunnel-background%2F" class="btn btn--google-plus" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Google Plus"><i class="fab fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=%2Flinux%2Fhow-to-ssh-tunnel-background%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/linux/how-to-ssh-linux/" class="pagination--pager" title="Using SSH for accessing remote server via a Jump Host and other handy things!
+">Previous</a>
+    
+    
+      <a href="/java/strategy-pattern/" class="pagination--pager" title="What problem does Strategy Pattern solve
+">Next</a>
+    
+  </nav>
+
+    </div>
+    
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Leave a Comment</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+    
+  </article>
+
+  <div id="scrollPercentLabel" data-toggle="tooltip" data-placement="left" title="" 
+  data-original-title="back to top" style="display: block;"> 
+    <a href="javascript:;">
+      <span class="stick-percent">0</span>%
+    </a> 
+  </div>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/java/javaee-8-gettingstarted/" rel="permalink">Java EE 8 Starter
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">If you haven’t heard already, then let me share the good news. The long awaited wait for Java EE 8 is finally over, as Oracle has officially released Java EE...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/angular/java/angular2-javaee-project.1/" rel="permalink">Structuring Angular and Java projects
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Frontend and Backend setup
+In the first part, I shared how you would begin setting up an Angular 2 project (Part 1).
+Before diving further into Angular, let’...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/angular/java/angular2-building-project/" rel="permalink">Angular 2+ with Java EE
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Getting started the right way
+Most of us follow a hello world sample for even our professional projects that we need to get on with.
+The same non production ...</p>
+  </article>
+</div>
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/linux/solus/" rel="permalink">Setup Solus Linux for development
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <p class="archive__item-excerpt" itemprop="description">Updated for Solus 1.2 on Dec’16.
+
+</p>
+  </article>
+</div>
+        
+      </div>
+    </div>
+  
+</div>
+
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+      <li><a href="https://github.com/prashantpro"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="/sitemap.xml"><i class="fas fa-fw fa-sitemap" aria-hidden="true"></i> Sitemap</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Prashant Padmanabhan.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-76164648-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "/linux/how-to-ssh-tunnel-background/";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/linux/how-to-ssh-tunnel-background"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      console.log(this.page.url);
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://prashantporg.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+  </body>
+</html>

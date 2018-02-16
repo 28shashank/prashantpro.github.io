@@ -1,0 +1,75 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+$sans-serif: -apple-system, BlinkMacSystemFont, "Varela Round",sans-serif !default;
+$type-size-docfont: 0.8em;
+$header-font-family: Montserrat,sans-serif !default;
+
+$menu-link-color: #fff;
+$menu-background-color: #332e2e !default;
+$masthead-link-color: $menu-link-color !default;
+$masthead-link-color-hover: mix(#000, $menu-link-color, 25%) !default;
+//$menu-link-color: #6aa33f;
+$menu-link-color: #ff9c00;
+$footer-background-color: #332e2e;
+
+.name-title {
+  color: #ff9c00 !important;
+  font-weight: 300;
+}
+
+#scrollPercentLabel {
+  position: fixed;
+  right: 25px;
+  bottom: 10px;
+  width: 60px;
+  height: 60px;
+  background-color: #bbb;
+  border-radius: 7px;
+  opacity: 0.8;
+  display: none;
+  z-index: 888;
+  font-family: Impact;
+  font-size: 16px;
+  color: #2B2B2B;
+  padding: 2px;
+  box-shadow: 8px 8px 5px rgba(20, 20, 20, 1);
+}
+#scrollPercentLabel>a {
+  text-decoration: none;
+  color: #0072be;
+  display: inline-block;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 2em 0 0.5em;
+  line-height: 1.2;
+  font-family: $header-font-family;
+  font-weight: normal !important;  
+}
+// h3,
+// h4,
+// h5,
+// h6 {
+// color: #3eaaaf;
+// }
+
+.page__footer>footer {
+  margin-top: 0.8em !important;
+  padding: 0 1em 0.4em !important;
+  font-family: $header-font-family;
+}
+
+@charset "utf-8";
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
